@@ -1,0 +1,2519 @@
+{
+  "name": "NMGN",
+  "description": "A description of the schema containing one or more templates.",
+  "in_language": "['en']",
+  "id": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+  "version": "1.0.0",
+  "prefixes": {
+    "linkml": {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    "GENEPIO": {
+      "prefix_prefix": "GENEPIO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/GENEPIO_"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "shex": {
+      "prefix_prefix": "shex",
+      "prefix_reference": "http://www.w3.org/ns/shex#"
+    },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    }
+  },
+  "default_prefix": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+  "types": {
+    "WhitespaceMinimizedString": {
+      "name": "WhitespaceMinimizedString",
+      "description": "A string that has all whitespace trimmed off of beginning and end, and all internal whitespace segments reduced to single spaces. Whitespace includes #x9 (tab), #xA (linefeed), and #xD (carriage return).",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "typeof": "string",
+      "base": "str",
+      "uri": "xsd:token"
+    },
+    "Provenance": {
+      "name": "Provenance",
+      "description": "A field containing a DataHarmonizer versioning marker. It is issued by DataHarmonizer when validation is applied to a given row of data.",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "typeof": "string",
+      "base": "str",
+      "uri": "xsd:token"
+    },
+    "string": {
+      "name": "string",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "xsd:string"
+    },
+    "integer": {
+      "name": "integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "xsd:integer"
+    },
+    "boolean": {
+      "name": "boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "xsd:boolean",
+      "repr": "bool"
+    },
+    "float": {
+      "name": "float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:float"
+    },
+    "double": {
+      "name": "double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:double"
+    },
+    "decimal": {
+      "name": "decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "xsd:decimal"
+    },
+    "time": {
+      "name": "time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "xsd:time",
+      "repr": "str"
+    },
+    "date": {
+      "name": "date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "xsd:date",
+      "repr": "str"
+    },
+    "datetime": {
+      "name": "datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "xsd:dateTime",
+      "repr": "str"
+    },
+    "date_or_datetime": {
+      "name": "date_or_datetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "str",
+      "uri": "linkml:DateOrDatetime",
+      "repr": "str"
+    },
+    "uriorcurie": {
+      "name": "uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "URIorCURIE",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "curie": {
+      "name": "curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "Curie",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "uri": {
+      "name": "uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "ncname": {
+      "name": "ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "NCName",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "objectidentifier": {
+      "name": "objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "ElementIdentifier",
+      "uri": "shex:iri",
+      "repr": "str"
+    },
+    "nodeidentifier": {
+      "name": "nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "NodeIdentifier",
+      "uri": "shex:nonLiteral",
+      "repr": "str"
+    },
+    "jsonpointer": {
+      "name": "jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "jsonpath": {
+      "name": "jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "sparqlpath": {
+      "name": "sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    }
+  },
+  "enums": {
+    "null value menu": {
+      "name": "null value menu",
+      "description": "A menu of data collection status options for this field.",
+      "title": "null value menu",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "Not Applicable": {
+          "text": "Not Applicable",
+          "meaning": "GENEPIO:0001619"
+        },
+        "Missing": {
+          "text": "Missing",
+          "meaning": "GENEPIO:0001618"
+        },
+        "Not Collected": {
+          "text": "Not Collected",
+          "meaning": "GENEPIO:0001620"
+        },
+        "Not Provided": {
+          "text": "Not Provided",
+          "meaning": "GENEPIO:0001668"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access",
+          "meaning": "GENEPIO:0001810"
+        }
+      }
+    },
+    "host_sex_options": {
+      "name": "host_sex_options",
+      "description": "gender or sex of the host",
+      "title": "host_sex_options",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "male": {
+          "text": "male"
+        },
+        "female": {
+          "text": "female"
+        },
+        "missing data sample": {
+          "text": "missing data sample"
+        }
+      }
+    },
+    "Permitted_countries_menu": {
+      "name": "Permitted_countries_menu",
+      "description": "A list of permitted countires accepted by ENA",
+      "title": "Permitted_countries_menu",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "Afghanistan": {
+          "text": "Afghanistan"
+        },
+        "Albania": {
+          "text": "Albania"
+        },
+        "Algeria": {
+          "text": "Algeria"
+        },
+        "American Samoa": {
+          "text": "American Samoa"
+        },
+        "Andorra": {
+          "text": "Andorra"
+        },
+        "Angola": {
+          "text": "Angola"
+        },
+        "Anguilla": {
+          "text": "Anguilla"
+        },
+        "Antarctica": {
+          "text": "Antarctica"
+        },
+        "Antigua and Barbuda": {
+          "text": "Antigua and Barbuda"
+        },
+        "Arctic Ocean": {
+          "text": "Arctic Ocean"
+        },
+        "Argentina": {
+          "text": "Argentina"
+        },
+        "Armenia": {
+          "text": "Armenia"
+        },
+        "Aruba": {
+          "text": "Aruba"
+        },
+        "Ashmore and Cartier Islands": {
+          "text": "Ashmore and Cartier Islands"
+        },
+        "Atlantic Ocean": {
+          "text": "Atlantic Ocean"
+        },
+        "Australia": {
+          "text": "Australia"
+        },
+        "Austria": {
+          "text": "Austria"
+        },
+        "Azerbaijan": {
+          "text": "Azerbaijan"
+        },
+        "Bahamas": {
+          "text": "Bahamas"
+        },
+        "Bahrain": {
+          "text": "Bahrain"
+        },
+        "Baltic Sea": {
+          "text": "Baltic Sea"
+        },
+        "Baker Island": {
+          "text": "Baker Island"
+        },
+        "Bangladesh": {
+          "text": "Bangladesh"
+        },
+        "Barbados": {
+          "text": "Barbados"
+        },
+        "Bassas da India": {
+          "text": "Bassas da India"
+        },
+        "Belarus": {
+          "text": "Belarus"
+        },
+        "Belgium": {
+          "text": "Belgium"
+        },
+        "Belize": {
+          "text": "Belize"
+        },
+        "Benin": {
+          "text": "Benin"
+        },
+        "Bermuda": {
+          "text": "Bermuda"
+        },
+        "Bhutan": {
+          "text": "Bhutan"
+        },
+        "Bolivia": {
+          "text": "Bolivia"
+        },
+        "Borneo": {
+          "text": "Borneo"
+        },
+        "Bosnia and Herzegovina": {
+          "text": "Bosnia and Herzegovina"
+        },
+        "Botswana": {
+          "text": "Botswana"
+        },
+        "Bouvet Island": {
+          "text": "Bouvet Island"
+        },
+        "Brazil": {
+          "text": "Brazil"
+        },
+        "British Virgin Islands": {
+          "text": "British Virgin Islands"
+        },
+        "Brunei": {
+          "text": "Brunei"
+        },
+        "Bulgaria": {
+          "text": "Bulgaria"
+        },
+        "Burkina Faso": {
+          "text": "Burkina Faso"
+        },
+        "Burundi": {
+          "text": "Burundi"
+        },
+        "Cambodia": {
+          "text": "Cambodia"
+        },
+        "Cameroon": {
+          "text": "Cameroon"
+        },
+        "Canada": {
+          "text": "Canada"
+        },
+        "Cape Verde": {
+          "text": "Cape Verde"
+        },
+        "Cayman Islands": {
+          "text": "Cayman Islands"
+        },
+        "Central African Republic": {
+          "text": "Central African Republic"
+        },
+        "Chad": {
+          "text": "Chad"
+        },
+        "Chile": {
+          "text": "Chile"
+        },
+        "China": {
+          "text": "China"
+        },
+        "Christmas Island": {
+          "text": "Christmas Island"
+        },
+        "Clipperton Island": {
+          "text": "Clipperton Island"
+        },
+        "Cocos Islands": {
+          "text": "Cocos Islands"
+        },
+        "Colombia": {
+          "text": "Colombia"
+        },
+        "Comoros": {
+          "text": "Comoros"
+        },
+        "Cook Islands": {
+          "text": "Cook Islands"
+        },
+        "Coral Sea Islands": {
+          "text": "Coral Sea Islands"
+        },
+        "Costa Rica": {
+          "text": "Costa Rica"
+        },
+        "Cote d'Ivoire": {
+          "text": "Cote d'Ivoire"
+        },
+        "Croatia": {
+          "text": "Croatia"
+        },
+        "Cuba": {
+          "text": "Cuba"
+        },
+        "Curacao": {
+          "text": "Curacao"
+        },
+        "Cyprus": {
+          "text": "Cyprus"
+        },
+        "Czechia": {
+          "text": "Czechia"
+        },
+        "Democratic Republic of the Congo": {
+          "text": "Democratic Republic of the Congo"
+        },
+        "Denmark": {
+          "text": "Denmark"
+        },
+        "Djibouti": {
+          "text": "Djibouti"
+        },
+        "Dominica": {
+          "text": "Dominica"
+        },
+        "Dominican Republic": {
+          "text": "Dominican Republic"
+        },
+        "Ecuador": {
+          "text": "Ecuador"
+        },
+        "Egypt": {
+          "text": "Egypt"
+        },
+        "El Salvador": {
+          "text": "El Salvador"
+        },
+        "Equatorial Guinea": {
+          "text": "Equatorial Guinea"
+        },
+        "Eritrea": {
+          "text": "Eritrea"
+        },
+        "Estonia": {
+          "text": "Estonia"
+        },
+        "Eswatini": {
+          "text": "Eswatini"
+        },
+        "Ethiopia": {
+          "text": "Ethiopia"
+        },
+        "Europa Island": {
+          "text": "Europa Island"
+        },
+        "Falkland Islands (Islas Malvinas)": {
+          "text": "Falkland Islands (Islas Malvinas)"
+        },
+        "Faroe Islands": {
+          "text": "Faroe Islands"
+        },
+        "Fiji": {
+          "text": "Fiji"
+        },
+        "Finland": {
+          "text": "Finland"
+        },
+        "France": {
+          "text": "France"
+        },
+        "French Guiana": {
+          "text": "French Guiana"
+        },
+        "French Polynesia": {
+          "text": "French Polynesia"
+        },
+        "French Southern and Antarctic Lands": {
+          "text": "French Southern and Antarctic Lands"
+        },
+        "Gabon": {
+          "text": "Gabon"
+        },
+        "Gambia": {
+          "text": "Gambia"
+        },
+        "Gaza Strip": {
+          "text": "Gaza Strip"
+        },
+        "Georgia": {
+          "text": "Georgia"
+        },
+        "Germany": {
+          "text": "Germany"
+        },
+        "Ghana": {
+          "text": "Ghana"
+        },
+        "Gibraltar": {
+          "text": "Gibraltar"
+        },
+        "Glorioso Islands": {
+          "text": "Glorioso Islands"
+        },
+        "Greece": {
+          "text": "Greece"
+        },
+        "Greenland": {
+          "text": "Greenland"
+        },
+        "Grenada": {
+          "text": "Grenada"
+        },
+        "Guadeloupe": {
+          "text": "Guadeloupe"
+        },
+        "Guam": {
+          "text": "Guam"
+        },
+        "Guatemala": {
+          "text": "Guatemala"
+        },
+        "Guernsey": {
+          "text": "Guernsey"
+        },
+        "Guinea": {
+          "text": "Guinea"
+        },
+        "Guinea-Bissau": {
+          "text": "Guinea-Bissau"
+        },
+        "Guyana": {
+          "text": "Guyana"
+        },
+        "Haiti": {
+          "text": "Haiti"
+        },
+        "Heard Island and McDonald Islands": {
+          "text": "Heard Island and McDonald Islands"
+        },
+        "Honduras": {
+          "text": "Honduras"
+        },
+        "Hong Kong": {
+          "text": "Hong Kong"
+        },
+        "Howland Island": {
+          "text": "Howland Island"
+        },
+        "Hungary": {
+          "text": "Hungary"
+        },
+        "Iceland": {
+          "text": "Iceland"
+        },
+        "India": {
+          "text": "India"
+        },
+        "Indian Ocean": {
+          "text": "Indian Ocean"
+        },
+        "Indonesia": {
+          "text": "Indonesia"
+        },
+        "Iran": {
+          "text": "Iran"
+        },
+        "Iraq": {
+          "text": "Iraq"
+        },
+        "Ireland": {
+          "text": "Ireland"
+        },
+        "Isle of Man": {
+          "text": "Isle of Man"
+        },
+        "Israel": {
+          "text": "Israel"
+        },
+        "Italy": {
+          "text": "Italy"
+        },
+        "Jamaica": {
+          "text": "Jamaica"
+        },
+        "Jan Mayen": {
+          "text": "Jan Mayen"
+        },
+        "Japan": {
+          "text": "Japan"
+        },
+        "Jarvis Island": {
+          "text": "Jarvis Island"
+        },
+        "Jersey": {
+          "text": "Jersey"
+        },
+        "Johnston Atoll": {
+          "text": "Johnston Atoll"
+        },
+        "Jordan": {
+          "text": "Jordan"
+        },
+        "Juan de Nova Island": {
+          "text": "Juan de Nova Island"
+        },
+        "Kazakhstan": {
+          "text": "Kazakhstan"
+        },
+        "Kenya": {
+          "text": "Kenya"
+        },
+        "Kerguelen Archipelago": {
+          "text": "Kerguelen Archipelago"
+        },
+        "Kingman Reef": {
+          "text": "Kingman Reef"
+        },
+        "Kiribati": {
+          "text": "Kiribati"
+        },
+        "Kosovo": {
+          "text": "Kosovo"
+        },
+        "Kuwait": {
+          "text": "Kuwait"
+        },
+        "Kyrgyzstan": {
+          "text": "Kyrgyzstan"
+        },
+        "Laos": {
+          "text": "Laos"
+        },
+        "Latvia": {
+          "text": "Latvia"
+        },
+        "Lebanon": {
+          "text": "Lebanon"
+        },
+        "Lesotho": {
+          "text": "Lesotho"
+        },
+        "Liberia": {
+          "text": "Liberia"
+        },
+        "Libya": {
+          "text": "Libya"
+        },
+        "Liechtenstein": {
+          "text": "Liechtenstein"
+        },
+        "Line Islands": {
+          "text": "Line Islands"
+        },
+        "Lithuania": {
+          "text": "Lithuania"
+        },
+        "Luxembourg": {
+          "text": "Luxembourg"
+        },
+        "Macau": {
+          "text": "Macau"
+        },
+        "Madagascar": {
+          "text": "Madagascar"
+        },
+        "Malawi": {
+          "text": "Malawi"
+        },
+        "Malaysia": {
+          "text": "Malaysia"
+        },
+        "Maldives": {
+          "text": "Maldives"
+        },
+        "Mali": {
+          "text": "Mali"
+        },
+        "Malta": {
+          "text": "Malta"
+        },
+        "Marshall Islands": {
+          "text": "Marshall Islands"
+        },
+        "Martinique": {
+          "text": "Martinique"
+        },
+        "Mauritania": {
+          "text": "Mauritania"
+        },
+        "Mauritius": {
+          "text": "Mauritius"
+        },
+        "Mayotte": {
+          "text": "Mayotte"
+        },
+        "Mediterranean Sea": {
+          "text": "Mediterranean Sea"
+        },
+        "Mexico": {
+          "text": "Mexico"
+        },
+        "Micronesia, Federated States of": {
+          "text": "Micronesia, Federated States of"
+        },
+        "Midway Islands": {
+          "text": "Midway Islands"
+        },
+        "Moldova": {
+          "text": "Moldova"
+        },
+        "Monaco": {
+          "text": "Monaco"
+        },
+        "Mongolia": {
+          "text": "Mongolia"
+        },
+        "Montenegro": {
+          "text": "Montenegro"
+        },
+        "Montserrat": {
+          "text": "Montserrat"
+        },
+        "Morocco": {
+          "text": "Morocco"
+        },
+        "Mozambique": {
+          "text": "Mozambique"
+        },
+        "Myanmar": {
+          "text": "Myanmar"
+        },
+        "Namibia": {
+          "text": "Namibia"
+        },
+        "Nauru": {
+          "text": "Nauru"
+        },
+        "Navassa Island": {
+          "text": "Navassa Island"
+        },
+        "Nepal": {
+          "text": "Nepal"
+        },
+        "Netherlands": {
+          "text": "Netherlands"
+        },
+        "New Caledonia": {
+          "text": "New Caledonia"
+        },
+        "New Zealand": {
+          "text": "New Zealand"
+        },
+        "Nicaragua": {
+          "text": "Nicaragua"
+        },
+        "Niger": {
+          "text": "Niger"
+        },
+        "Nigeria": {
+          "text": "Nigeria"
+        },
+        "Niue": {
+          "text": "Niue"
+        },
+        "Norfolk Island": {
+          "text": "Norfolk Island"
+        },
+        "North Korea": {
+          "text": "North Korea"
+        },
+        "North Macedonia": {
+          "text": "North Macedonia"
+        },
+        "North Sea": {
+          "text": "North Sea"
+        },
+        "Northern Mariana Islands": {
+          "text": "Northern Mariana Islands"
+        },
+        "Norway": {
+          "text": "Norway"
+        },
+        "Oman": {
+          "text": "Oman"
+        },
+        "Pacific Ocean": {
+          "text": "Pacific Ocean"
+        },
+        "Pakistan": {
+          "text": "Pakistan"
+        },
+        "Palau": {
+          "text": "Palau"
+        },
+        "Palmyra Atoll": {
+          "text": "Palmyra Atoll"
+        },
+        "Panama": {
+          "text": "Panama"
+        },
+        "Papua New Guinea": {
+          "text": "Papua New Guinea"
+        },
+        "Paracel Islands": {
+          "text": "Paracel Islands"
+        },
+        "Paraguay": {
+          "text": "Paraguay"
+        },
+        "Peru": {
+          "text": "Peru"
+        },
+        "Philippines": {
+          "text": "Philippines"
+        },
+        "Pitcairn Islands": {
+          "text": "Pitcairn Islands"
+        },
+        "Poland": {
+          "text": "Poland"
+        },
+        "Portugal": {
+          "text": "Portugal"
+        },
+        "Puerto Rico": {
+          "text": "Puerto Rico"
+        },
+        "Qatar": {
+          "text": "Qatar"
+        },
+        "Republic of the Congo": {
+          "text": "Republic of the Congo"
+        },
+        "Reunion": {
+          "text": "Reunion"
+        },
+        "Romania": {
+          "text": "Romania"
+        },
+        "Ross Sea": {
+          "text": "Ross Sea"
+        },
+        "Russia": {
+          "text": "Russia"
+        },
+        "Rwanda": {
+          "text": "Rwanda"
+        },
+        "Saint Barthelemy": {
+          "text": "Saint Barthelemy"
+        },
+        "Saint Helena": {
+          "text": "Saint Helena"
+        },
+        "Saint Kitts and Nevis": {
+          "text": "Saint Kitts and Nevis"
+        },
+        "Saint Lucia": {
+          "text": "Saint Lucia"
+        },
+        "Saint Martin": {
+          "text": "Saint Martin"
+        },
+        "Saint Pierre and Miquelon": {
+          "text": "Saint Pierre and Miquelon"
+        },
+        "Saint Vincent and the Grenadines": {
+          "text": "Saint Vincent and the Grenadines"
+        },
+        "Samoa": {
+          "text": "Samoa"
+        },
+        "San Marino": {
+          "text": "San Marino"
+        },
+        "Sao Tome and Principe": {
+          "text": "Sao Tome and Principe"
+        },
+        "Saudi Arabia": {
+          "text": "Saudi Arabia"
+        },
+        "Senegal": {
+          "text": "Senegal"
+        },
+        "Serbia": {
+          "text": "Serbia"
+        },
+        "Seychelles": {
+          "text": "Seychelles"
+        },
+        "Sierra Leone": {
+          "text": "Sierra Leone"
+        },
+        "Singapore": {
+          "text": "Singapore"
+        },
+        "Sint Maarten": {
+          "text": "Sint Maarten"
+        },
+        "Slovakia": {
+          "text": "Slovakia"
+        },
+        "Slovenia": {
+          "text": "Slovenia"
+        },
+        "Solomon Islands": {
+          "text": "Solomon Islands"
+        },
+        "Somalia": {
+          "text": "Somalia"
+        },
+        "South Africa": {
+          "text": "South Africa"
+        },
+        "South Georgia and the South Sandwich Islands": {
+          "text": "South Georgia and the South Sandwich Islands"
+        },
+        "South Korea": {
+          "text": "South Korea"
+        },
+        "South Sudan": {
+          "text": "South Sudan"
+        },
+        "Southern Ocean": {
+          "text": "Southern Ocean"
+        },
+        "Spain": {
+          "text": "Spain"
+        },
+        "Spratly Islands": {
+          "text": "Spratly Islands"
+        },
+        "Sri Lanka": {
+          "text": "Sri Lanka"
+        },
+        "State of Palestine": {
+          "text": "State of Palestine"
+        },
+        "Sudan": {
+          "text": "Sudan"
+        },
+        "Suriname": {
+          "text": "Suriname"
+        },
+        "Svalbard": {
+          "text": "Svalbard"
+        },
+        "Sweden": {
+          "text": "Sweden"
+        },
+        "Switzerland": {
+          "text": "Switzerland"
+        },
+        "Syria": {
+          "text": "Syria"
+        },
+        "Taiwan": {
+          "text": "Taiwan"
+        },
+        "Tajikistan": {
+          "text": "Tajikistan"
+        },
+        "Tanzania": {
+          "text": "Tanzania"
+        },
+        "Tasman Sea": {
+          "text": "Tasman Sea"
+        },
+        "Thailand": {
+          "text": "Thailand"
+        },
+        "Timor-Leste": {
+          "text": "Timor-Leste"
+        },
+        "Togo": {
+          "text": "Togo"
+        },
+        "Tokelau": {
+          "text": "Tokelau"
+        },
+        "Tonga": {
+          "text": "Tonga"
+        },
+        "Trinidad and Tobago": {
+          "text": "Trinidad and Tobago"
+        },
+        "Tromelin Island": {
+          "text": "Tromelin Island"
+        },
+        "Tunisia": {
+          "text": "Tunisia"
+        },
+        "Turkey": {
+          "text": "Turkey"
+        },
+        "Turkmenistan": {
+          "text": "Turkmenistan"
+        },
+        "Turks and Caicos Islands": {
+          "text": "Turks and Caicos Islands"
+        },
+        "Tuvalu": {
+          "text": "Tuvalu"
+        },
+        "Uganda": {
+          "text": "Uganda"
+        },
+        "Ukraine": {
+          "text": "Ukraine"
+        },
+        "United Arab Emirates": {
+          "text": "United Arab Emirates"
+        },
+        "United Kingdom": {
+          "text": "United Kingdom"
+        },
+        "Uruguay": {
+          "text": "Uruguay"
+        },
+        "USA": {
+          "text": "USA"
+        },
+        "Uzbekistan": {
+          "text": "Uzbekistan"
+        },
+        "Vanuatu": {
+          "text": "Vanuatu"
+        },
+        "Venezuela": {
+          "text": "Venezuela"
+        },
+        "Viet Nam": {
+          "text": "Viet Nam"
+        },
+        "Virgin Islands": {
+          "text": "Virgin Islands"
+        },
+        "Wake Island": {
+          "text": "Wake Island"
+        },
+        "Wallis and Futuna": {
+          "text": "Wallis and Futuna"
+        },
+        "West Bank": {
+          "text": "West Bank"
+        },
+        "Western Sahara": {
+          "text": "Western Sahara"
+        },
+        "Yemen": {
+          "text": "Yemen"
+        },
+        "Zambia": {
+          "text": "Zambia"
+        },
+        "Zimbabwe": {
+          "text": "Zimbabwe"
+        },
+        "Belgian Congo": {
+          "text": "Belgian Congo"
+        },
+        "British Guiana": {
+          "text": "British Guiana"
+        },
+        "Burma": {
+          "text": "Burma"
+        },
+        "Czechoslovakia": {
+          "text": "Czechoslovakia"
+        },
+        "Czech Republic": {
+          "text": "Czech Republic"
+        },
+        "East Timor": {
+          "text": "East Timor"
+        },
+        "Korea": {
+          "text": "Korea"
+        },
+        "Macedonia": {
+          "text": "Macedonia"
+        },
+        "Micronesia": {
+          "text": "Micronesia"
+        },
+        "Netherlands Antilles": {
+          "text": "Netherlands Antilles"
+        },
+        "Serbia and Montenegro": {
+          "text": "Serbia and Montenegro"
+        },
+        "Siam": {
+          "text": "Siam"
+        },
+        "Swaziland": {
+          "text": "Swaziland"
+        },
+        "The former Yugoslav Republic of Macedonia": {
+          "text": "The former Yugoslav Republic of Macedonia"
+        },
+        "USSR": {
+          "text": "USSR"
+        },
+        "Yugoslavia": {
+          "text": "Yugoslavia"
+        },
+        "Zaire": {
+          "text": "Zaire"
+        }
+      }
+    },
+    "Permitted_Facilities_menu": {
+      "name": "Permitted_Facilities_menu",
+      "description": "A list of institutes-facilities (18) used by the NMGN microbiome cluster for mouse studies",
+      "title": "Permitted_Facilities_menu",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "MRC Harwell-Mary Lyons Centre": {
+          "text": "MRC Harwell-Mary Lyons Centre"
+        },
+        "Francis Crick Institute-aimal facility": {
+          "text": "Francis Crick Institute-aimal facility"
+        },
+        "Wellcome Sanger Institute-animal facility": {
+          "text": "Wellcome Sanger Institute-animal facility"
+        },
+        "UE Queen's Medical Research Institute-Centre for Cardiovascular Science": {
+          "text": "UE Queen's Medical Research Institute-Centre for Cardiovascular Science"
+        },
+        "Oxford Biomedial Services Building": {
+          "text": "Oxford Biomedial Services Building"
+        },
+        "Cambridge University Biomedical Services": {
+          "text": "Cambridge University Biomedical Services"
+        },
+        "King's College London-Animal Research Facility": {
+          "text": "King's College London-Animal Research Facility"
+        },
+        "Barbraham Institute - Animal Facility": {
+          "text": "Barbraham Institute - Animal Facility"
+        },
+        "Manchester University-Biological Services Facility": {
+          "text": "Manchester University-Biological Services Facility"
+        },
+        "Pirbright Institute-Brooksby Building": {
+          "text": "Pirbright Institute-Brooksby Building"
+        }
+      }
+    },
+    "cage_manufacturer_menu": {
+      "name": "cage_manufacturer_menu",
+      "description": "a list of manufacturers that the mouse cages are sourced from.",
+      "title": "cage_manufacturer_menu",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "Tecniplast": {
+          "text": "Tecniplast"
+        },
+        "Allen town": {
+          "text": "Allen town"
+        },
+        "NKP": {
+          "text": "NKP"
+        },
+        "cage_manufacturer_4": {
+          "text": "cage_manufacturer_4"
+        }
+      }
+    },
+    "sample collection date precision menu": {
+      "name": "sample collection date precision menu",
+      "description": "date the sample was collected",
+      "title": "sample collection date precision menu",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "year": {
+          "text": "year",
+          "meaning": "UO:0000036"
+        },
+        "month": {
+          "text": "month",
+          "meaning": "UO:0000035"
+        },
+        "day": {
+          "text": "day",
+          "meaning": "UO:0000033"
+        }
+      }
+    },
+    "nutrition_diet_types_option": {
+      "name": "nutrition_diet_types_option",
+      "description": "a list of diet types that can be provided to the NMGN mice.",
+      "title": "nutrition_diet_types_option",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "natural ingredients": {
+          "text": "natural ingredients"
+        },
+        "chemically-defined": {
+          "text": "chemically-defined"
+        },
+        "purified diet": {
+          "text": "purified diet"
+        },
+        "transgenic mouse special food": {
+          "text": "transgenic mouse special food"
+        }
+      }
+    },
+    "tax_id_menu": {
+      "name": "tax_id_menu",
+      "description": "Taxonomic identification of the organism(s) collected as in the NCBI Taxonomy database",
+      "title": "tax_id_menu",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "permissible_values": {
+        "410661": {
+          "text": "410661",
+          "meaning": "NCBITaxon:410661"
+        },
+        "1441287": {
+          "text": "1441287",
+          "meaning": "NCBITaxon:1441287"
+        }
+      }
+    }
+  },
+  "slots": {
+    "sample_title": {
+      "name": "sample_title",
+      "description": "title of the sample",
+      "title": "sample_title",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "syk mouse gut sample 1"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:sample_title",
+        "BIOSAMPLE:sample_title",
+        "ENA:sample_title"
+      ],
+      "slot_uri": "GENEPIO:0001808",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "sample_alias": {
+      "name": "sample_alias",
+      "description": "Unique name of the sample. If not selected system will automatically use the ENA sample accession as the sample ID ",
+      "title": "sample_alias",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "syk mouse gut sample 1"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:sample_alias",
+        "BIOSAMPLE:sample_alias",
+        "ENA:sample_alias"
+      ],
+      "slot_uri": "GENEPIO:0100427",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "sample_description": {
+      "name": "sample_description",
+      "description": "description of the sample",
+      "title": "sample_description",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "fecal sample collected from syk mouse gut"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:sample_description",
+        "BIOSAMPLE:sample_description",
+        "ENA:sample_description"
+      ],
+      "slot_uri": "GENEPIO:0100439",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "tax_id": {
+      "name": "tax_id",
+      "description": "Taxonomy ID of the organism as in the NCBI Taxonomy database. Entries in the NCBI Taxonomy database have integer taxon IDs.",
+      "title": "tax_id",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "410661"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:tax_id",
+        "BIOSAMPLE:tax_id",
+        "ENA:tax_id"
+      ],
+      "slot_uri": "GENEPIO:0001640",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "tax_id_menu",
+      "required": true
+    },
+    "sample collection method": {
+      "name": "sample collection method",
+      "description": "The method employed for collecting the sample. Can be provided in the form of a PMID, DOI, url or text",
+      "title": "sample collection method",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "wet collection method"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:sample%20collection%20method",
+        "BIOSAMPLE:sample%20collection%20method",
+        "ENA:sample%20collection%20method"
+      ],
+      "slot_uri": "GENEPIO:0001241",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": false
+    },
+    "sample derived from": {
+      "name": "sample derived from",
+      "description": "Reference to parental sample(s) or original run(s) that the assembly is derived from. The referenced samples or runs should already be registered in INSDC. This should be formatted as one of the following. A single sample/run e.g. ERSxxxxxx OR a comma separated list e.g. ERSxxxxxx,ERSxxxxxx OR a range e.g. ERSxxxxxx-ERSxxxxxx",
+      "title": "sample derived from",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "mouse gut"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:sample%20derived%20from",
+        "BIOSAMPLE:sample%20derived%20from",
+        "ENA:sample%20derived%20from"
+      ],
+      "slot_uri": "GENEPIO:0000000",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": false
+    },
+    "broad-scale environmental context": {
+      "name": "broad-scale environmental context",
+      "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvOÕs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+      "title": "broad-scale environmental context",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "host-associated"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:broad-scale%20environmental%20context",
+        "BIOSAMPLE:broad-scale%20environmental%20context",
+        "ENA:broad-scale%20environment%20context"
+      ],
+      "slot_uri": "GENEPIO:0000027",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "local environmental context": {
+      "name": "local environmental context",
+      "description": "Report the entity or entities which are in the sample or specimenÕs local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for \"broad-scale environmental context\". Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+      "title": "local environmental context",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "mouse digestive system"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:local%20environmental%20context",
+        "BIOSAMPLE:local%20environment%20context",
+        "ENA:local%20environment%20context"
+      ],
+      "slot_uri": "GENEPIO:0000027",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "environmental medium": {
+      "name": "environmental medium",
+      "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+      "title": "environmental medium",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "gut"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:environmental%20medium",
+        "BIOSAMPLE:environmental%20medium",
+        "ENA:envrionment%20medium"
+      ],
+      "slot_uri": "GENEPIO:0000027",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "collection date": {
+      "name": "collection date",
+      "description": "The date the sample was collected with the intention of sequencing, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid ISO8601 compliant times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008.",
+      "title": "collection date",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "17/01/2023"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:collection%20date",
+        "BIOSAMPLE:collection%20date",
+        "ENA:collection%20date"
+      ],
+      "slot_uri": "GENEPIO:0001174",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "date",
+      "required": true
+    },
+    "project name": {
+      "name": "project name",
+      "description": "Name of the project within which the sequencing was organized",
+      "title": "project name",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "SYK mouse gut project"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:project%20name",
+        "BIOSAMPLE:project%20name",
+        "ENA:project%20name"
+      ],
+      "slot_uri": "GENEPIO:0100429",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "geographic location (country and/or sea)": {
+      "name": "geographic location (country and/or sea)",
+      "description": "The geographical origin of where the sample was collected from, with the intention of sequencing, as defined by the country or sea name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html).",
+      "title": "geographic location (country and/or sea)",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "United Kingdom"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:geographic%20location%20(country%20and/or%20sea)",
+        "BIOSAMPLE:geographic%20location%20(country%20and/or%20sea)",
+        "ENA:geographic%20location%20(country%20and/or%20sea)"
+      ],
+      "slot_uri": "GENEPIO:0100629",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "Permitted_countries_menu",
+      "required": true
+    },
+    "geographic location (latitude)": {
+      "name": "geographic location (latitude)",
+      "description": "The geographical origin of the sample as defined by latitude. The values should be reported in decimal degrees and in WGS84 system",
+      "title": "geographic location (latitude)",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "51.75314817"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:geographic%20location%20(latitude)",
+        "BIOSAMPLE:geographic%20location%20(latitude)",
+        "ENA:geographic%20location%20(latitude)"
+      ],
+      "slot_uri": "GENEPIO:0100309",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "geographic location (longitude)": {
+      "name": "geographic location (longitude)",
+      "description": "The geographical origin of the sample as defined by longitude. The values should be reported in decimal degrees and in WGS84 system",
+      "title": "geographic location (longitude)",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "-1.214122657"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:geographic%20location%20(longitude)",
+        "BIOSAMPLE:geographic%20location%20(longitude)",
+        "ENA:geographic%20location%20(longitude)"
+      ],
+      "slot_uri": "GENEPIO:0100310",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": true
+    },
+    "host taxid": {
+      "name": "host taxid",
+      "description": "NCBI taxon id of the host, e.g. 10090",
+      "title": "host taxid",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "10090"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:host%20taxid",
+        "BIOSAMPLE:host%20taxid",
+        "ENA:host%20taxid"
+      ],
+      "slot_uri": "GENEPIO:0000000",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": false
+    },
+    "host scientific name": {
+      "name": "host scientific name",
+      "description": "Scientific name of the natural (as opposed to laboratory) host to the organism from which sample was obtained. Note this needs to correspond to the host taxid (e.g. Mus musculus -> 10090)",
+      "title": "host scientific name",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "mus musculus"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:host%20scientific%20name",
+        "BIOSAMPLE:host%20scientific%20name",
+        "ENA:host%20scientific%20name"
+      ],
+      "slot_uri": "GENEPIO:0000000",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "WhitespaceMinimizedString",
+      "required": false
+    },
+    "institute_facility": {
+      "name": "institute_facility",
+      "description": "Name of Institute-[animal] facility the mouse was last housed in",
+      "title": "institute_facility",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "OXF-KRI"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:institute_facility",
+        "BIOSAMPLE:institute_facility",
+        "institute_facility"
+      ],
+      "slot_uri": "GENEPIO:0000000",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "Permitted_Facilities_menu",
+      "required": false
+    },
+    "nutrition_diet_type": {
+      "name": "nutrition_diet_type",
+      "description": "diet provided to mouse",
+      "title": "nutrition_diet_type",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "mouse special food"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:nutrition_diet_type",
+        "BIOSAMPLE:nutrition_diet_type",
+        "ENA:nutrition_diet_type"
+      ],
+      "slot_uri": "GENEPIO:0100444",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "nutrition_diet_types_option",
+      "recommended": true
+    },
+    "cage_manufacturer": {
+      "name": "cage_manufacturer",
+      "description": "name of manufacturer that the cage was sourced from",
+      "title": "cage_manufacturer",
+      "comments": [
+        "any additional comments, can have multiple, seperated by commas"
+      ],
+      "examples": [
+        {
+          "value": "Tecniplast"
+        }
+      ],
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "exact_mappings": [
+        "VirusSeq_Portal:cage_manufacturer",
+        "BIOSAMPLE:cage_manufacturer",
+        "ENA:cage_manufacturer"
+      ],
+      "slot_uri": "GENEPIO:0000000",
+      "domain_of": [
+        "NMGN_microbiome"
+      ],
+      "range": "cage_manufacturer_menu",
+      "required": false
+    }
+  },
+  "classes": {
+    "dh_interface": {
+      "name": "dh_interface",
+      "description": "A DataHarmonizer interface",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/"
+    },
+    "NMGN_microbiome": {
+      "name": "NMGN_microbiome",
+      "description": "National Mouse Genetics Network metadata template",
+      "title": "NMGN microbiome",
+      "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+      "see_also": [
+        "templates/NMGN/SOP.pdf"
+      ],
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "sample_title": {
+          "name": "sample_title",
+          "rank": 1,
+          "slot_group": "sample"
+        },
+        "sample_alias": {
+          "name": "sample_alias",
+          "rank": 2,
+          "slot_group": "sample"
+        },
+        "sample_description": {
+          "name": "sample_description",
+          "rank": 3,
+          "slot_group": "sample"
+        },
+        "tax_id": {
+          "name": "tax_id",
+          "rank": 4,
+          "slot_group": "sample"
+        },
+        "sample collection method": {
+          "name": "sample collection method",
+          "rank": 5,
+          "slot_group": "sample"
+        },
+        "sample derived from": {
+          "name": "sample derived from",
+          "rank": 6,
+          "slot_group": "sample"
+        },
+        "broad-scale environmental context": {
+          "name": "broad-scale environmental context",
+          "rank": 7,
+          "slot_group": "sample"
+        },
+        "local environmental context": {
+          "name": "local environmental context",
+          "rank": 8,
+          "slot_group": "sample"
+        },
+        "environmental medium": {
+          "name": "environmental medium",
+          "rank": 9,
+          "slot_group": "sample"
+        },
+        "collection date": {
+          "name": "collection date",
+          "rank": 10,
+          "slot_group": "sample"
+        },
+        "project name": {
+          "name": "project name",
+          "rank": 11,
+          "slot_group": "study"
+        },
+        "geographic location (country and/or sea)": {
+          "name": "geographic location (country and/or sea)",
+          "rank": 12,
+          "slot_group": "location"
+        },
+        "geographic location (latitude)": {
+          "name": "geographic location (latitude)",
+          "rank": 13,
+          "slot_group": "location"
+        },
+        "geographic location (longitude)": {
+          "name": "geographic location (longitude)",
+          "rank": 14,
+          "slot_group": "location"
+        },
+        "host taxid": {
+          "name": "host taxid",
+          "rank": 15,
+          "slot_group": "mouse"
+        },
+        "host scientific name": {
+          "name": "host scientific name",
+          "rank": 16,
+          "slot_group": "mouse"
+        },
+        "institute_facility": {
+          "name": "institute_facility",
+          "rank": 17,
+          "slot_group": "facility"
+        },
+        "nutrition_diet_type": {
+          "name": "nutrition_diet_type",
+          "rank": 18,
+          "slot_group": "facility"
+        },
+        "cage_manufacturer": {
+          "name": "cage_manufacturer",
+          "rank": 19,
+          "slot_group": "facility"
+        }
+      },
+      "attributes": {
+        "sample_title": {
+          "name": "sample_title",
+          "description": "title of the sample",
+          "title": "sample_title",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "syk mouse gut sample 1"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:sample_title",
+            "BIOSAMPLE:sample_title",
+            "ENA:sample_title"
+          ],
+          "rank": 1,
+          "slot_uri": "GENEPIO:0001808",
+          "alias": "sample_title",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "sample_alias": {
+          "name": "sample_alias",
+          "description": "Unique name of the sample. If not selected system will automatically use the ENA sample accession as the sample ID ",
+          "title": "sample_alias",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "syk mouse gut sample 1"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:sample_alias",
+            "BIOSAMPLE:sample_alias",
+            "ENA:sample_alias"
+          ],
+          "rank": 2,
+          "slot_uri": "GENEPIO:0100427",
+          "alias": "sample_alias",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "sample_description": {
+          "name": "sample_description",
+          "description": "description of the sample",
+          "title": "sample_description",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "fecal sample collected from syk mouse gut"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:sample_description",
+            "BIOSAMPLE:sample_description",
+            "ENA:sample_description"
+          ],
+          "rank": 3,
+          "slot_uri": "GENEPIO:0100439",
+          "alias": "sample_description",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "tax_id": {
+          "name": "tax_id",
+          "description": "Taxonomy ID of the organism as in the NCBI Taxonomy database. Entries in the NCBI Taxonomy database have integer taxon IDs.",
+          "title": "tax_id",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "410661"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:tax_id",
+            "BIOSAMPLE:tax_id",
+            "ENA:tax_id"
+          ],
+          "rank": 4,
+          "slot_uri": "GENEPIO:0001640",
+          "alias": "tax_id",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "tax_id_menu",
+          "required": true
+        },
+        "sample collection method": {
+          "name": "sample collection method",
+          "description": "The method employed for collecting the sample. Can be provided in the form of a PMID, DOI, url or text",
+          "title": "sample collection method",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "wet collection method"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:sample%20collection%20method",
+            "BIOSAMPLE:sample%20collection%20method",
+            "ENA:sample%20collection%20method"
+          ],
+          "rank": 5,
+          "slot_uri": "GENEPIO:0001241",
+          "alias": "sample_collection_method",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": false
+        },
+        "sample derived from": {
+          "name": "sample derived from",
+          "description": "Reference to parental sample(s) or original run(s) that the assembly is derived from. The referenced samples or runs should already be registered in INSDC. This should be formatted as one of the following. A single sample/run e.g. ERSxxxxxx OR a comma separated list e.g. ERSxxxxxx,ERSxxxxxx OR a range e.g. ERSxxxxxx-ERSxxxxxx",
+          "title": "sample derived from",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "mouse gut"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:sample%20derived%20from",
+            "BIOSAMPLE:sample%20derived%20from",
+            "ENA:sample%20derived%20from"
+          ],
+          "rank": 6,
+          "slot_uri": "GENEPIO:0000000",
+          "alias": "sample_derived_from",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": false
+        },
+        "broad-scale environmental context": {
+          "name": "broad-scale environmental context",
+          "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvOÕs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+          "title": "broad-scale environmental context",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "host-associated"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:broad-scale%20environmental%20context",
+            "BIOSAMPLE:broad-scale%20environmental%20context",
+            "ENA:broad-scale%20environment%20context"
+          ],
+          "rank": 7,
+          "slot_uri": "GENEPIO:0000027",
+          "alias": "broad_scale_environmental_context",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "local environmental context": {
+          "name": "local environmental context",
+          "description": "Report the entity or entities which are in the sample or specimenÕs local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for \"broad-scale environmental context\". Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+          "title": "local environmental context",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "mouse digestive system"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:local%20environmental%20context",
+            "BIOSAMPLE:local%20environment%20context",
+            "ENA:local%20environment%20context"
+          ],
+          "rank": 8,
+          "slot_uri": "GENEPIO:0000027",
+          "alias": "local_environmental_context",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "environmental medium": {
+          "name": "environmental medium",
+          "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+          "title": "environmental medium",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "gut"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:environmental%20medium",
+            "BIOSAMPLE:environmental%20medium",
+            "ENA:envrionment%20medium"
+          ],
+          "rank": 9,
+          "slot_uri": "GENEPIO:0000027",
+          "alias": "environmental_medium",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "collection date": {
+          "name": "collection date",
+          "description": "The date the sample was collected with the intention of sequencing, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid ISO8601 compliant times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008.",
+          "title": "collection date",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "17/01/2023"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:collection%20date",
+            "BIOSAMPLE:collection%20date",
+            "ENA:collection%20date"
+          ],
+          "rank": 10,
+          "slot_uri": "GENEPIO:0001174",
+          "alias": "collection_date",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "sample",
+          "range": "date",
+          "required": true
+        },
+        "project name": {
+          "name": "project name",
+          "description": "Name of the project within which the sequencing was organized",
+          "title": "project name",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "SYK mouse gut project"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:project%20name",
+            "BIOSAMPLE:project%20name",
+            "ENA:project%20name"
+          ],
+          "rank": 11,
+          "slot_uri": "GENEPIO:0100429",
+          "alias": "project_name",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "study",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "geographic location (country and/or sea)": {
+          "name": "geographic location (country and/or sea)",
+          "description": "The geographical origin of where the sample was collected from, with the intention of sequencing, as defined by the country or sea name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html).",
+          "title": "geographic location (country and/or sea)",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "United Kingdom"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:geographic%20location%20(country%20and/or%20sea)",
+            "BIOSAMPLE:geographic%20location%20(country%20and/or%20sea)",
+            "ENA:geographic%20location%20(country%20and/or%20sea)"
+          ],
+          "rank": 12,
+          "slot_uri": "GENEPIO:0100629",
+          "alias": "geographic_location_(country_and/or_sea)",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "location",
+          "range": "Permitted_countries_menu",
+          "required": true
+        },
+        "geographic location (latitude)": {
+          "name": "geographic location (latitude)",
+          "description": "The geographical origin of the sample as defined by latitude. The values should be reported in decimal degrees and in WGS84 system",
+          "title": "geographic location (latitude)",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "51.75314817"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:geographic%20location%20(latitude)",
+            "BIOSAMPLE:geographic%20location%20(latitude)",
+            "ENA:geographic%20location%20(latitude)"
+          ],
+          "rank": 13,
+          "slot_uri": "GENEPIO:0100309",
+          "alias": "geographic_location_(latitude)",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "location",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "geographic location (longitude)": {
+          "name": "geographic location (longitude)",
+          "description": "The geographical origin of the sample as defined by longitude. The values should be reported in decimal degrees and in WGS84 system",
+          "title": "geographic location (longitude)",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "-1.214122657"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:geographic%20location%20(longitude)",
+            "BIOSAMPLE:geographic%20location%20(longitude)",
+            "ENA:geographic%20location%20(longitude)"
+          ],
+          "rank": 14,
+          "slot_uri": "GENEPIO:0100310",
+          "alias": "geographic_location_(longitude)",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "location",
+          "range": "WhitespaceMinimizedString",
+          "required": true
+        },
+        "host taxid": {
+          "name": "host taxid",
+          "description": "NCBI taxon id of the host, e.g. 10090",
+          "title": "host taxid",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "10090"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:host%20taxid",
+            "BIOSAMPLE:host%20taxid",
+            "ENA:host%20taxid"
+          ],
+          "rank": 15,
+          "slot_uri": "GENEPIO:0000000",
+          "alias": "host_taxid",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "mouse",
+          "range": "WhitespaceMinimizedString",
+          "required": false
+        },
+        "host scientific name": {
+          "name": "host scientific name",
+          "description": "Scientific name of the natural (as opposed to laboratory) host to the organism from which sample was obtained. Note this needs to correspond to the host taxid (e.g. Mus musculus -> 10090)",
+          "title": "host scientific name",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "mus musculus"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:host%20scientific%20name",
+            "BIOSAMPLE:host%20scientific%20name",
+            "ENA:host%20scientific%20name"
+          ],
+          "rank": 16,
+          "slot_uri": "GENEPIO:0000000",
+          "alias": "host_scientific_name",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "mouse",
+          "range": "WhitespaceMinimizedString",
+          "required": false
+        },
+        "institute_facility": {
+          "name": "institute_facility",
+          "description": "Name of Institute-[animal] facility the mouse was last housed in",
+          "title": "institute_facility",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "OXF-KRI"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:institute_facility",
+            "BIOSAMPLE:institute_facility",
+            "institute_facility"
+          ],
+          "rank": 17,
+          "slot_uri": "GENEPIO:0000000",
+          "alias": "institute_facility",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "facility",
+          "range": "Permitted_Facilities_menu",
+          "required": false
+        },
+        "nutrition_diet_type": {
+          "name": "nutrition_diet_type",
+          "description": "diet provided to mouse",
+          "title": "nutrition_diet_type",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "mouse special food"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:nutrition_diet_type",
+            "BIOSAMPLE:nutrition_diet_type",
+            "ENA:nutrition_diet_type"
+          ],
+          "rank": 18,
+          "slot_uri": "GENEPIO:0100444",
+          "alias": "nutrition_diet_type",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "facility",
+          "range": "nutrition_diet_types_option",
+          "recommended": true
+        },
+        "cage_manufacturer": {
+          "name": "cage_manufacturer",
+          "description": "name of manufacturer that the cage was sourced from",
+          "title": "cage_manufacturer",
+          "comments": [
+            "any additional comments, can have multiple, seperated by commas"
+          ],
+          "examples": [
+            {
+              "value": "Tecniplast"
+            }
+          ],
+          "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
+          "exact_mappings": [
+            "VirusSeq_Portal:cage_manufacturer",
+            "BIOSAMPLE:cage_manufacturer",
+            "ENA:cage_manufacturer"
+          ],
+          "rank": 19,
+          "slot_uri": "GENEPIO:0000000",
+          "alias": "cage_manufacturer",
+          "owner": "NMGN_microbiome",
+          "domain_of": [
+            "NMGN_microbiome"
+          ],
+          "slot_group": "facility",
+          "range": "cage_manufacturer_menu",
+          "required": false
+        }
+      }
+    }
+  },
+  "source_file": "schema.yaml",
+  "settings": {
+    "Title_Case": {
+      "setting_key": "Title_Case",
+      "setting_value": "(((?<=\b)[^a-z\\W]\\w*?|[\\W])+)"
+    },
+    "UPPER_CASE": {
+      "setting_key": "UPPER_CASE",
+      "setting_value": "[A-Z\\W\\d_]*"
+    },
+    "lower_case": {
+      "setting_key": "lower_case",
+      "setting_value": "[a-z\\W\\d_]*"
+    }
+  },
+  "@type": "SchemaDefinition"
+}

@@ -1,0 +1,1130 @@
+id: https://nmgn.mrc.ukri.org/clusters/microbiome/
+name: NMGN
+description: A description of the schema containing one or more templates.
+version: 1.0.0
+in_language:
+- en
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
+classes:
+  dh_interface:
+    name: dh_interface
+    description: A DataHarmonizer interface
+    from_schema: https://example.com/NMGN
+  NMGN_microbiome:
+    name: NMGN_microbiome
+    title: NMGN microbiome
+    description: National Mouse Genetics Network metadata template
+    is_a: dh_interface
+    see_also: templates/NMGN/SOP.pdf
+    slots:
+    - sample_title
+    - sample_alias
+    - sample_description
+    - tax_id
+    - sample collection method
+    - sample derived from
+    - broad-scale environmental context
+    - local environmental context
+    - environmental medium
+    - collection date
+    - project name
+    - geographic location (country and/or sea)
+    - geographic location (latitude)
+    - geographic location (longitude)
+    - host taxid
+    - host scientific name
+    - institute_facility
+    - nutrition_diet_type
+    - cage_manufacturer
+    slot_usage:
+      sample_title:
+        rank: 1
+        slot_group: sample
+      sample_alias:
+        rank: 2
+        slot_group: sample
+      sample_description:
+        rank: 3
+        slot_group: sample
+      tax_id:
+        rank: 4
+        slot_group: sample
+      sample collection method:
+        rank: 5
+        slot_group: sample
+      sample derived from:
+        rank: 6
+        slot_group: sample
+      broad-scale environmental context:
+        rank: 7
+        slot_group: sample
+      local environmental context:
+        rank: 8
+        slot_group: sample
+      environmental medium:
+        rank: 9
+        slot_group: sample
+      collection date:
+        rank: 10
+        slot_group: sample
+      project name:
+        rank: 11
+        slot_group: study
+      geographic location (country and/or sea):
+        rank: 12
+        slot_group: location
+      geographic location (latitude):
+        rank: 13
+        slot_group: location
+      geographic location (longitude):
+        rank: 14
+        slot_group: location
+      host taxid:
+        rank: 15
+        slot_group: mouse
+      host scientific name:
+        rank: 16
+        slot_group: mouse
+      institute_facility:
+        rank: 17
+        slot_group: facility
+      nutrition_diet_type:
+        rank: 18
+        slot_group: facility
+      cage_manufacturer:
+        rank: 19
+        slot_group: facility
+slots:
+  sample_title:
+    name: sample_title
+    title: sample_title
+    description: title of the sample
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: syk mouse gut sample 1
+    slot_uri: GENEPIO:0001808
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:sample_title
+    - BIOSAMPLE:sample_title
+    - ENA:sample_title
+    required: true
+  sample_alias:
+    name: sample_alias
+    title: sample_alias
+    description: 'Unique name of the sample. If not selected system will automatically
+      use the ENA sample accession as the sample ID '
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: syk mouse gut sample 1
+    slot_uri: GENEPIO:0100427
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:sample_alias
+    - BIOSAMPLE:sample_alias
+    - ENA:sample_alias
+    required: true
+  sample_description:
+    name: sample_description
+    title: sample_description
+    description: description of the sample
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: fecal sample collected from syk mouse gut
+    slot_uri: GENEPIO:0100439
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:sample_description
+    - BIOSAMPLE:sample_description
+    - ENA:sample_description
+    required: true
+  tax_id:
+    name: tax_id
+    title: tax_id
+    description: Taxonomy ID of the organism as in the NCBI Taxonomy database. Entries
+      in the NCBI Taxonomy database have integer taxon IDs.
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '410661'
+    slot_uri: GENEPIO:0001640
+    range: tax_id_menu
+    exact_mappings:
+    - VirusSeq_Portal:tax_id
+    - BIOSAMPLE:tax_id
+    - ENA:tax_id
+    required: true
+  sample collection method:
+    name: sample collection method
+    title: sample collection method
+    description: The method employed for collecting the sample. Can be provided in
+      the form of a PMID, DOI, url or text
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: wet collection method
+    slot_uri: GENEPIO:0001241
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:sample%20collection%20method
+    - BIOSAMPLE:sample%20collection%20method
+    - ENA:sample%20collection%20method
+    required: false
+  sample derived from:
+    name: sample derived from
+    title: sample derived from
+    description: Reference to parental sample(s) or original run(s) that the assembly
+      is derived from. The referenced samples or runs should already be registered
+      in INSDC. This should be formatted as one of the following. A single sample/run
+      e.g. ERSxxxxxx OR a comma separated list e.g. ERSxxxxxx,ERSxxxxxx OR a range
+      e.g. ERSxxxxxx-ERSxxxxxx
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: mouse gut
+    slot_uri: GENEPIO:0000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:sample%20derived%20from
+    - BIOSAMPLE:sample%20derived%20from
+    - ENA:sample%20derived%20from
+    required: false
+  broad-scale environmental context:
+    name: broad-scale environmental context
+    title: broad-scale environmental context
+    description: "Report the major environmental system the sample or specimen came\
+      \ from. The system(s) identified should have a coarse spatial grain, to provide\
+      \ the general environmental context of where the sampling was done (e.g. in\
+      \ the desert or a rainforest). We recommend using subclasses of EnvO\xD5s biome\
+      \ class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about\
+      \ how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: host-associated
+    slot_uri: GENEPIO:0000027
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:broad-scale%20environmental%20context
+    - BIOSAMPLE:broad-scale%20environmental%20context
+    - ENA:broad-scale%20environment%20context
+    required: true
+  local environmental context:
+    name: local environmental context
+    title: local environmental context
+    description: "Report the entity or entities which are in the sample or specimen\xD5\
+      s local vicinity and which you believe have significant causal influences on\
+      \ your sample or specimen. We recommend using EnvO terms which are of smaller\
+      \ spatial grain than your entry for \"broad-scale environmental context\". Terms,\
+      \ such as anatomical sites, from other OBO Library ontologies which interoperate\
+      \ with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about\
+      \ how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: mouse digestive system
+    slot_uri: GENEPIO:0000027
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:local%20environmental%20context
+    - BIOSAMPLE:local%20environment%20context
+    - ENA:local%20environment%20context
+    required: true
+  environmental medium:
+    name: environmental medium
+    title: environmental medium
+    description: 'Report the environmental material(s) immediately surrounding the
+      sample or specimen at the time of sampling. We recommend using subclasses of
+      ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO
+      documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+      . Terms from other OBO ontologies are permissible as long as they reference
+      mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities
+      (e.g. a tree, a leaf, a table top).'
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: gut
+    slot_uri: GENEPIO:0000027
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:environmental%20medium
+    - BIOSAMPLE:environmental%20medium
+    - ENA:envrionment%20medium
+    required: true
+  collection date:
+    name: collection date
+    title: collection date
+    description: 'The date the sample was collected with the intention of sequencing,
+      either as an instance (single point in time) or interval. In case no exact time
+      is available, the date/time can be right truncated i.e. all of these are valid
+      ISO8601 compliant times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23;
+      2008-01; 2008.'
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: 17/01/2023
+    slot_uri: GENEPIO:0001174
+    range: date
+    exact_mappings:
+    - VirusSeq_Portal:collection%20date
+    - BIOSAMPLE:collection%20date
+    - ENA:collection%20date
+    required: true
+  project name:
+    name: project name
+    title: project name
+    description: Name of the project within which the sequencing was organized
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: SYK mouse gut project
+    slot_uri: GENEPIO:0100429
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:project%20name
+    - BIOSAMPLE:project%20name
+    - ENA:project%20name
+    required: true
+  geographic location (country and/or sea):
+    name: geographic location (country and/or sea)
+    title: geographic location (country and/or sea)
+    description: The geographical origin of where the sample was collected from, with
+      the intention of sequencing, as defined by the country or sea name. Country
+      or sea names should be chosen from the INSDC country list (http://insdc.org/country.html).
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: United Kingdom
+    slot_uri: GENEPIO:0100629
+    range: Permitted_countries_menu
+    exact_mappings:
+    - VirusSeq_Portal:geographic%20location%20(country%20and/or%20sea)
+    - BIOSAMPLE:geographic%20location%20(country%20and/or%20sea)
+    - ENA:geographic%20location%20(country%20and/or%20sea)
+    required: true
+  geographic location (latitude):
+    name: geographic location (latitude)
+    title: geographic location (latitude)
+    description: The geographical origin of the sample as defined by latitude. The
+      values should be reported in decimal degrees and in WGS84 system
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '51.75314817'
+    slot_uri: GENEPIO:0100309
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:geographic%20location%20(latitude)
+    - BIOSAMPLE:geographic%20location%20(latitude)
+    - ENA:geographic%20location%20(latitude)
+    required: true
+  geographic location (longitude):
+    name: geographic location (longitude)
+    title: geographic location (longitude)
+    description: The geographical origin of the sample as defined by longitude. The
+      values should be reported in decimal degrees and in WGS84 system
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '-1.214122657'
+    slot_uri: GENEPIO:0100310
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:geographic%20location%20(longitude)
+    - BIOSAMPLE:geographic%20location%20(longitude)
+    - ENA:geographic%20location%20(longitude)
+    required: true
+  host taxid:
+    name: host taxid
+    title: host taxid
+    description: NCBI taxon id of the host, e.g. 10090
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '10090'
+    slot_uri: GENEPIO:0000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:host%20taxid
+    - BIOSAMPLE:host%20taxid
+    - ENA:host%20taxid
+    required: false
+  host scientific name:
+    name: host scientific name
+    title: host scientific name
+    description: Scientific name of the natural (as opposed to laboratory) host to
+      the organism from which sample was obtained. Note this needs to correspond to
+      the host taxid (e.g. Mus musculus -> 10090)
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: mus musculus
+    slot_uri: GENEPIO:0000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:host%20scientific%20name
+    - BIOSAMPLE:host%20scientific%20name
+    - ENA:host%20scientific%20name
+    required: false
+  institute_facility:
+    name: institute_facility
+    title: institute_facility
+    description: Name of Institute-[animal] facility the mouse was last housed in
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: OXF-KRI
+    slot_uri: GENEPIO:0000000
+    range: Permitted_Facilities_menu
+    exact_mappings:
+    - VirusSeq_Portal:institute_facility
+    - BIOSAMPLE:institute_facility
+    - institute_facility
+    required: false
+  nutrition_diet_type:
+    name: nutrition_diet_type
+    title: nutrition_diet_type
+    description: diet provided to mouse
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: mouse special food
+    slot_uri: GENEPIO:0100444
+    range: nutrition_diet_types_option
+    exact_mappings:
+    - VirusSeq_Portal:nutrition_diet_type
+    - BIOSAMPLE:nutrition_diet_type
+    - ENA:nutrition_diet_type
+    recommended: true
+  cage_manufacturer:
+    name: cage_manufacturer
+    title: cage_manufacturer
+    description: name of manufacturer that the cage was sourced from
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: Tecniplast
+    slot_uri: GENEPIO:0000000
+    range: cage_manufacturer_menu
+    exact_mappings:
+    - VirusSeq_Portal:cage_manufacturer
+    - BIOSAMPLE:cage_manufacturer
+    - ENA:cage_manufacturer
+    required: false
+enums:
+  null value menu:
+    name: null value menu
+    title: null value menu
+    description: A menu of data collection status options for this field.
+    permissible_values:
+      Not Applicable:
+        text: Not Applicable
+        meaning: GENEPIO:0001619
+      Missing:
+        text: Missing
+        meaning: GENEPIO:0001618
+      Not Collected:
+        text: Not Collected
+        meaning: GENEPIO:0001620
+      Not Provided:
+        text: Not Provided
+        meaning: GENEPIO:0001668
+      Restricted Access:
+        text: Restricted Access
+        meaning: GENEPIO:0001810
+  host_sex_options:
+    name: host_sex_options
+    title: host_sex_options
+    description: gender or sex of the host
+    permissible_values:
+      male:
+        text: male
+      female:
+        text: female
+      missing data sample:
+        text: missing data sample
+  Permitted_countries_menu:
+    name: Permitted_countries_menu
+    title: Permitted_countries_menu
+    description: A list of permitted countires accepted by ENA
+    permissible_values:
+      Afghanistan:
+        text: Afghanistan
+      Albania:
+        text: Albania
+      Algeria:
+        text: Algeria
+      American Samoa:
+        text: American Samoa
+      Andorra:
+        text: Andorra
+      Angola:
+        text: Angola
+      Anguilla:
+        text: Anguilla
+      Antarctica:
+        text: Antarctica
+      Antigua and Barbuda:
+        text: Antigua and Barbuda
+      Arctic Ocean:
+        text: Arctic Ocean
+      Argentina:
+        text: Argentina
+      Armenia:
+        text: Armenia
+      Aruba:
+        text: Aruba
+      Ashmore and Cartier Islands:
+        text: Ashmore and Cartier Islands
+      Atlantic Ocean:
+        text: Atlantic Ocean
+      Australia:
+        text: Australia
+      Austria:
+        text: Austria
+      Azerbaijan:
+        text: Azerbaijan
+      Bahamas:
+        text: Bahamas
+      Bahrain:
+        text: Bahrain
+      Baltic Sea:
+        text: Baltic Sea
+      Baker Island:
+        text: Baker Island
+      Bangladesh:
+        text: Bangladesh
+      Barbados:
+        text: Barbados
+      Bassas da India:
+        text: Bassas da India
+      Belarus:
+        text: Belarus
+      Belgium:
+        text: Belgium
+      Belize:
+        text: Belize
+      Benin:
+        text: Benin
+      Bermuda:
+        text: Bermuda
+      Bhutan:
+        text: Bhutan
+      Bolivia:
+        text: Bolivia
+      Borneo:
+        text: Borneo
+      Bosnia and Herzegovina:
+        text: Bosnia and Herzegovina
+      Botswana:
+        text: Botswana
+      Bouvet Island:
+        text: Bouvet Island
+      Brazil:
+        text: Brazil
+      British Virgin Islands:
+        text: British Virgin Islands
+      Brunei:
+        text: Brunei
+      Bulgaria:
+        text: Bulgaria
+      Burkina Faso:
+        text: Burkina Faso
+      Burundi:
+        text: Burundi
+      Cambodia:
+        text: Cambodia
+      Cameroon:
+        text: Cameroon
+      Canada:
+        text: Canada
+      Cape Verde:
+        text: Cape Verde
+      Cayman Islands:
+        text: Cayman Islands
+      Central African Republic:
+        text: Central African Republic
+      Chad:
+        text: Chad
+      Chile:
+        text: Chile
+      China:
+        text: China
+      Christmas Island:
+        text: Christmas Island
+      Clipperton Island:
+        text: Clipperton Island
+      Cocos Islands:
+        text: Cocos Islands
+      Colombia:
+        text: Colombia
+      Comoros:
+        text: Comoros
+      Cook Islands:
+        text: Cook Islands
+      Coral Sea Islands:
+        text: Coral Sea Islands
+      Costa Rica:
+        text: Costa Rica
+      Cote d'Ivoire:
+        text: Cote d'Ivoire
+      Croatia:
+        text: Croatia
+      Cuba:
+        text: Cuba
+      Curacao:
+        text: Curacao
+      Cyprus:
+        text: Cyprus
+      Czechia:
+        text: Czechia
+      Democratic Republic of the Congo:
+        text: Democratic Republic of the Congo
+      Denmark:
+        text: Denmark
+      Djibouti:
+        text: Djibouti
+      Dominica:
+        text: Dominica
+      Dominican Republic:
+        text: Dominican Republic
+      Ecuador:
+        text: Ecuador
+      Egypt:
+        text: Egypt
+      El Salvador:
+        text: El Salvador
+      Equatorial Guinea:
+        text: Equatorial Guinea
+      Eritrea:
+        text: Eritrea
+      Estonia:
+        text: Estonia
+      Eswatini:
+        text: Eswatini
+      Ethiopia:
+        text: Ethiopia
+      Europa Island:
+        text: Europa Island
+      Falkland Islands (Islas Malvinas):
+        text: Falkland Islands (Islas Malvinas)
+      Faroe Islands:
+        text: Faroe Islands
+      Fiji:
+        text: Fiji
+      Finland:
+        text: Finland
+      France:
+        text: France
+      French Guiana:
+        text: French Guiana
+      French Polynesia:
+        text: French Polynesia
+      French Southern and Antarctic Lands:
+        text: French Southern and Antarctic Lands
+      Gabon:
+        text: Gabon
+      Gambia:
+        text: Gambia
+      Gaza Strip:
+        text: Gaza Strip
+      Georgia:
+        text: Georgia
+      Germany:
+        text: Germany
+      Ghana:
+        text: Ghana
+      Gibraltar:
+        text: Gibraltar
+      Glorioso Islands:
+        text: Glorioso Islands
+      Greece:
+        text: Greece
+      Greenland:
+        text: Greenland
+      Grenada:
+        text: Grenada
+      Guadeloupe:
+        text: Guadeloupe
+      Guam:
+        text: Guam
+      Guatemala:
+        text: Guatemala
+      Guernsey:
+        text: Guernsey
+      Guinea:
+        text: Guinea
+      Guinea-Bissau:
+        text: Guinea-Bissau
+      Guyana:
+        text: Guyana
+      Haiti:
+        text: Haiti
+      Heard Island and McDonald Islands:
+        text: Heard Island and McDonald Islands
+      Honduras:
+        text: Honduras
+      Hong Kong:
+        text: Hong Kong
+      Howland Island:
+        text: Howland Island
+      Hungary:
+        text: Hungary
+      Iceland:
+        text: Iceland
+      India:
+        text: India
+      Indian Ocean:
+        text: Indian Ocean
+      Indonesia:
+        text: Indonesia
+      Iran:
+        text: Iran
+      Iraq:
+        text: Iraq
+      Ireland:
+        text: Ireland
+      Isle of Man:
+        text: Isle of Man
+      Israel:
+        text: Israel
+      Italy:
+        text: Italy
+      Jamaica:
+        text: Jamaica
+      Jan Mayen:
+        text: Jan Mayen
+      Japan:
+        text: Japan
+      Jarvis Island:
+        text: Jarvis Island
+      Jersey:
+        text: Jersey
+      Johnston Atoll:
+        text: Johnston Atoll
+      Jordan:
+        text: Jordan
+      Juan de Nova Island:
+        text: Juan de Nova Island
+      Kazakhstan:
+        text: Kazakhstan
+      Kenya:
+        text: Kenya
+      Kerguelen Archipelago:
+        text: Kerguelen Archipelago
+      Kingman Reef:
+        text: Kingman Reef
+      Kiribati:
+        text: Kiribati
+      Kosovo:
+        text: Kosovo
+      Kuwait:
+        text: Kuwait
+      Kyrgyzstan:
+        text: Kyrgyzstan
+      Laos:
+        text: Laos
+      Latvia:
+        text: Latvia
+      Lebanon:
+        text: Lebanon
+      Lesotho:
+        text: Lesotho
+      Liberia:
+        text: Liberia
+      Libya:
+        text: Libya
+      Liechtenstein:
+        text: Liechtenstein
+      Line Islands:
+        text: Line Islands
+      Lithuania:
+        text: Lithuania
+      Luxembourg:
+        text: Luxembourg
+      Macau:
+        text: Macau
+      Madagascar:
+        text: Madagascar
+      Malawi:
+        text: Malawi
+      Malaysia:
+        text: Malaysia
+      Maldives:
+        text: Maldives
+      Mali:
+        text: Mali
+      Malta:
+        text: Malta
+      Marshall Islands:
+        text: Marshall Islands
+      Martinique:
+        text: Martinique
+      Mauritania:
+        text: Mauritania
+      Mauritius:
+        text: Mauritius
+      Mayotte:
+        text: Mayotte
+      Mediterranean Sea:
+        text: Mediterranean Sea
+      Mexico:
+        text: Mexico
+      Micronesia, Federated States of:
+        text: Micronesia, Federated States of
+      Midway Islands:
+        text: Midway Islands
+      Moldova:
+        text: Moldova
+      Monaco:
+        text: Monaco
+      Mongolia:
+        text: Mongolia
+      Montenegro:
+        text: Montenegro
+      Montserrat:
+        text: Montserrat
+      Morocco:
+        text: Morocco
+      Mozambique:
+        text: Mozambique
+      Myanmar:
+        text: Myanmar
+      Namibia:
+        text: Namibia
+      Nauru:
+        text: Nauru
+      Navassa Island:
+        text: Navassa Island
+      Nepal:
+        text: Nepal
+      Netherlands:
+        text: Netherlands
+      New Caledonia:
+        text: New Caledonia
+      New Zealand:
+        text: New Zealand
+      Nicaragua:
+        text: Nicaragua
+      Niger:
+        text: Niger
+      Nigeria:
+        text: Nigeria
+      Niue:
+        text: Niue
+      Norfolk Island:
+        text: Norfolk Island
+      North Korea:
+        text: North Korea
+      North Macedonia:
+        text: North Macedonia
+      North Sea:
+        text: North Sea
+      Northern Mariana Islands:
+        text: Northern Mariana Islands
+      Norway:
+        text: Norway
+      Oman:
+        text: Oman
+      Pacific Ocean:
+        text: Pacific Ocean
+      Pakistan:
+        text: Pakistan
+      Palau:
+        text: Palau
+      Palmyra Atoll:
+        text: Palmyra Atoll
+      Panama:
+        text: Panama
+      Papua New Guinea:
+        text: Papua New Guinea
+      Paracel Islands:
+        text: Paracel Islands
+      Paraguay:
+        text: Paraguay
+      Peru:
+        text: Peru
+      Philippines:
+        text: Philippines
+      Pitcairn Islands:
+        text: Pitcairn Islands
+      Poland:
+        text: Poland
+      Portugal:
+        text: Portugal
+      Puerto Rico:
+        text: Puerto Rico
+      Qatar:
+        text: Qatar
+      Republic of the Congo:
+        text: Republic of the Congo
+      Reunion:
+        text: Reunion
+      Romania:
+        text: Romania
+      Ross Sea:
+        text: Ross Sea
+      Russia:
+        text: Russia
+      Rwanda:
+        text: Rwanda
+      Saint Barthelemy:
+        text: Saint Barthelemy
+      Saint Helena:
+        text: Saint Helena
+      Saint Kitts and Nevis:
+        text: Saint Kitts and Nevis
+      Saint Lucia:
+        text: Saint Lucia
+      Saint Martin:
+        text: Saint Martin
+      Saint Pierre and Miquelon:
+        text: Saint Pierre and Miquelon
+      Saint Vincent and the Grenadines:
+        text: Saint Vincent and the Grenadines
+      Samoa:
+        text: Samoa
+      San Marino:
+        text: San Marino
+      Sao Tome and Principe:
+        text: Sao Tome and Principe
+      Saudi Arabia:
+        text: Saudi Arabia
+      Senegal:
+        text: Senegal
+      Serbia:
+        text: Serbia
+      Seychelles:
+        text: Seychelles
+      Sierra Leone:
+        text: Sierra Leone
+      Singapore:
+        text: Singapore
+      Sint Maarten:
+        text: Sint Maarten
+      Slovakia:
+        text: Slovakia
+      Slovenia:
+        text: Slovenia
+      Solomon Islands:
+        text: Solomon Islands
+      Somalia:
+        text: Somalia
+      South Africa:
+        text: South Africa
+      South Georgia and the South Sandwich Islands:
+        text: South Georgia and the South Sandwich Islands
+      South Korea:
+        text: South Korea
+      South Sudan:
+        text: South Sudan
+      Southern Ocean:
+        text: Southern Ocean
+      Spain:
+        text: Spain
+      Spratly Islands:
+        text: Spratly Islands
+      Sri Lanka:
+        text: Sri Lanka
+      State of Palestine:
+        text: State of Palestine
+      Sudan:
+        text: Sudan
+      Suriname:
+        text: Suriname
+      Svalbard:
+        text: Svalbard
+      Sweden:
+        text: Sweden
+      Switzerland:
+        text: Switzerland
+      Syria:
+        text: Syria
+      Taiwan:
+        text: Taiwan
+      Tajikistan:
+        text: Tajikistan
+      Tanzania:
+        text: Tanzania
+      Tasman Sea:
+        text: Tasman Sea
+      Thailand:
+        text: Thailand
+      Timor-Leste:
+        text: Timor-Leste
+      Togo:
+        text: Togo
+      Tokelau:
+        text: Tokelau
+      Tonga:
+        text: Tonga
+      Trinidad and Tobago:
+        text: Trinidad and Tobago
+      Tromelin Island:
+        text: Tromelin Island
+      Tunisia:
+        text: Tunisia
+      Turkey:
+        text: Turkey
+      Turkmenistan:
+        text: Turkmenistan
+      Turks and Caicos Islands:
+        text: Turks and Caicos Islands
+      Tuvalu:
+        text: Tuvalu
+      Uganda:
+        text: Uganda
+      Ukraine:
+        text: Ukraine
+      United Arab Emirates:
+        text: United Arab Emirates
+      United Kingdom:
+        text: United Kingdom
+      Uruguay:
+        text: Uruguay
+      USA:
+        text: USA
+      Uzbekistan:
+        text: Uzbekistan
+      Vanuatu:
+        text: Vanuatu
+      Venezuela:
+        text: Venezuela
+      Viet Nam:
+        text: Viet Nam
+      Virgin Islands:
+        text: Virgin Islands
+      Wake Island:
+        text: Wake Island
+      Wallis and Futuna:
+        text: Wallis and Futuna
+      West Bank:
+        text: West Bank
+      Western Sahara:
+        text: Western Sahara
+      Yemen:
+        text: Yemen
+      Zambia:
+        text: Zambia
+      Zimbabwe:
+        text: Zimbabwe
+      Belgian Congo:
+        text: Belgian Congo
+      British Guiana:
+        text: British Guiana
+      Burma:
+        text: Burma
+      Czechoslovakia:
+        text: Czechoslovakia
+      Czech Republic:
+        text: Czech Republic
+      East Timor:
+        text: East Timor
+      Korea:
+        text: Korea
+      Macedonia:
+        text: Macedonia
+      Micronesia:
+        text: Micronesia
+      Netherlands Antilles:
+        text: Netherlands Antilles
+      Serbia and Montenegro:
+        text: Serbia and Montenegro
+      Siam:
+        text: Siam
+      Swaziland:
+        text: Swaziland
+      The former Yugoslav Republic of Macedonia:
+        text: The former Yugoslav Republic of Macedonia
+      USSR:
+        text: USSR
+      Yugoslavia:
+        text: Yugoslavia
+      Zaire:
+        text: Zaire
+  Permitted_Facilities_menu:
+    name: Permitted_Facilities_menu
+    title: Permitted_Facilities_menu
+    description: A list of institutes-facilities (18) used by the NMGN microbiome
+      cluster for mouse studies
+    permissible_values:
+      MRC Harwell-Mary Lyons Centre:
+        text: MRC Harwell-Mary Lyons Centre
+      Francis Crick Institute-aimal facility:
+        text: Francis Crick Institute-aimal facility
+      Wellcome Sanger Institute-animal facility:
+        text: Wellcome Sanger Institute-animal facility
+      UE Queen's Medical Research Institute-Centre for Cardiovascular Science:
+        text: UE Queen's Medical Research Institute-Centre for Cardiovascular Science
+      Oxford Biomedial Services Building:
+        text: Oxford Biomedial Services Building
+      Cambridge University Biomedical Services:
+        text: Cambridge University Biomedical Services
+      King's College London-Animal Research Facility:
+        text: King's College London-Animal Research Facility
+      Barbraham Institute - Animal Facility:
+        text: Barbraham Institute - Animal Facility
+      Manchester University-Biological Services Facility:
+        text: Manchester University-Biological Services Facility
+      Pirbright Institute-Brooksby Building:
+        text: Pirbright Institute-Brooksby Building
+  cage_manufacturer_menu:
+    name: cage_manufacturer_menu
+    title: cage_manufacturer_menu
+    description: a list of manufacturers that the mouse cages are sourced from.
+    permissible_values:
+      Tecniplast:
+        text: Tecniplast
+      Allen town:
+        text: Allen town
+      NKP:
+        text: NKP
+      cage_manufacturer_4:
+        text: cage_manufacturer_4
+  sample collection date precision menu:
+    name: sample collection date precision menu
+    title: sample collection date precision menu
+    description: date the sample was collected
+    permissible_values:
+      year:
+        text: year
+        meaning: UO:0000036
+      month:
+        text: month
+        meaning: UO:0000035
+      day:
+        text: day
+        meaning: UO:0000033
+  nutrition_diet_types_option:
+    name: nutrition_diet_types_option
+    title: nutrition_diet_types_option
+    description: a list of diet types that can be provided to the NMGN mice.
+    permissible_values:
+      natural ingredients:
+        text: natural ingredients
+      chemically-defined:
+        text: chemically-defined
+      purified diet:
+        text: purified diet
+      transgenic mouse special food:
+        text: transgenic mouse special food
+  tax_id_menu:
+    name: tax_id_menu
+    title: tax_id_menu
+    description: Taxonomic identification of the organism(s) collected as in the NCBI
+      Taxonomy database
+    permissible_values:
+      '410661':
+        text: '410661'
+        meaning: NCBITaxon:410661
+      '1441287':
+        text: '1441287'
+        meaning: NCBITaxon:1441287
+types:
+  WhitespaceMinimizedString:
+    name: WhitespaceMinimizedString
+    typeof: string
+    description: 'A string that has all whitespace trimmed off of beginning and end,
+      and all internal whitespace segments reduced to single spaces. Whitespace includes
+      #x9 (tab), #xA (linefeed), and #xD (carriage return).'
+    base: str
+    uri: xsd:token
+  Provenance:
+    name: Provenance
+    typeof: string
+    description: A field containing a DataHarmonizer versioning marker. It is issued
+      by DataHarmonizer when validation is applied to a given row of data.
+    base: str
+    uri: xsd:token
+settings:
+  Title_Case: "(((?<=\b)[^a-z\\W]\\w*?|[\\W])+)"
+  UPPER_CASE: '[A-Z\W\d_]*'
+  lower_case: '[a-z\W\d_]*'
