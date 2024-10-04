@@ -1,0 +1,155 @@
+id: https://example.com/CanCOGeN_Covid-19
+name: NMGN
+description: A description of the schema containing one or more templates.
+version: 1.0.0
+in_language:
+- en
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ONTOLOGY1: http://purl.obolibrary.org/obo/ONTOLOGY1_
+classes:
+  dh_interface:
+    name: dh_interface
+    description: A DataHarmonizer interface
+  NMGN_microbiome:
+    name: NMGN_microbiome
+    title: NMGN microbiome
+    description: A description of the template.
+    is_a: dh_interface
+    see_also: templates/TEMPLATE_FOLDER/SOP.pdf
+    slots:
+    - tax_id
+    - scientific_name
+    slot_usage:
+      tax_id:
+        rank: 1
+        slot_group: sample
+      scientific_name:
+        rank: 2
+        slot_group: mouse
+slots:
+  tax_id:
+    name: tax_id
+    title: tax_id
+    description: Taxonomy ID of the organism as in the NCBI Taxonomy database. Entries
+      in the NCBI Taxonomy database have integer taxon IDs.
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '410661'
+    required: true
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA_sample_registration:tax_id
+  scientific_name:
+    name: scientific_name
+    title: scientific_name
+    description: Scientific name of the organism as in the NCBI Taxonomy database.
+      Scientific names typically follow the binomial nomenclature. For example, the
+      scientific name for common mouse  is Mus musculus.
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: mouse gut metagenome
+    required: true
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA_sample_registration:scientific_name
+enums:
+  NullValueMenu:
+    name: NullValueMenu
+    title: null value menu
+    description: A menu of data collection status options for this field.
+    permissible_values:
+      Not Applicable:
+        text: Not Applicable
+        meaning: GENEPIO:0001619
+      Missing:
+        text: Missing
+        meaning: GENEPIO:0001618
+      Not Collected:
+        text: Not Collected
+        meaning: GENEPIO:0001620
+      Not Provided:
+        text: Not Provided
+        meaning: GENEPIO:0001668
+      Restricted Access:
+        text: Restricted Access
+        meaning: GENEPIO:0001810
+  SequenceSubmittedByMenu:
+    name: SequenceSubmittedByMenu
+    title: sequence submitted by menu
+    description: A menu of analytic laboratories.
+    permissible_values:
+      Alberta Precision Labs (APL):
+        text: Alberta Precision Labs (APL)
+      Alberta ProvLab North (APLN):
+        text: Alberta ProvLab North (APLN)
+        is_a: Alberta Precision Labs (APL)
+      Alberta ProvLab South (APLS):
+        text: Alberta ProvLab South (APLS)
+        is_a: Alberta Precision Labs (APL)
+      BCCDC Public Health Laboratory:
+        text: BCCDC Public Health Laboratory
+      Canadore College:
+        text: Canadore College
+      The Centre for Applied Genomics (TCAG):
+        text: The Centre for Applied Genomics (TCAG)
+      Dynacare:
+        text: Dynacare
+      Dynacare (Brampton):
+        text: Dynacare (Brampton)
+      Dynacare (Manitoba):
+        text: Dynacare (Manitoba)
+      The Hospital for Sick Children (SickKids):
+        text: The Hospital for Sick Children (SickKids)
+      "Laboratoire de sant\xE9 publique du Qu\xE9bec (LSPQ)":
+        text: "Laboratoire de sant\xE9 publique du Qu\xE9bec (LSPQ)"
+      Manitoba Cadham Provincial Laboratory:
+        text: Manitoba Cadham Provincial Laboratory
+      McGill University:
+        text: McGill University
+      McMaster University:
+        text: McMaster University
+      National Microbiology Laboratory (NML):
+        text: National Microbiology Laboratory (NML)
+      "New Brunswick - Vitalit\xE9 Health Network":
+        text: "New Brunswick - Vitalit\xE9 Health Network"
+      Newfoundland and Labrador - Eastern Health:
+        text: Newfoundland and Labrador - Eastern Health
+      Nova Scotia Health Authority:
+        text: Nova Scotia Health Authority
+      Ontario Institute for Cancer Research (OICR):
+        text: Ontario Institute for Cancer Research (OICR)
+      Prince Edward Island - Health PEI:
+        text: Prince Edward Island - Health PEI
+      Public Health Ontario (PHO):
+        text: Public Health Ontario (PHO)
+      Queen's University / Kingston Health Sciences Centre:
+        text: Queen's University / Kingston Health Sciences Centre
+      Saskatchewan - Roy Romanow Provincial Laboratory (RRPL):
+        text: Saskatchewan - Roy Romanow Provincial Laboratory (RRPL)
+      Sunnybrook Health Sciences Centre:
+        text: Sunnybrook Health Sciences Centre
+      Thunder Bay Regional Health Sciences Centre:
+        text: Thunder Bay Regional Health Sciences Centre
+types:
+  WhitespaceMinimizedString:
+    name: WhitespaceMinimizedString
+    typeof: string
+    description: 'A string that has all whitespace trimmed off of beginning and end,
+      and all internal whitespace segments reduced to single spaces. Whitespace includes
+      #x9 (tab), #xA (linefeed), and #xD (carriage return).'
+    base: str
+    uri: xsd:token
+  Provenance:
+    name: Provenance
+    typeof: string
+    description: A field containing a DataHarmonizer versioning marker. It is issued
+      by DataHarmonizer when validation is applied to a given row of data.
+    base: str
+    uri: xsd:token
+settings:
+  Title_Case: (((?<=\b)[^a-z\W]\w*?|[\W])+)
+  UPPER_CASE: '[A-Z\W\d_]*'
+  lower_case: '[a-z\W\d_]*'
