@@ -1,10 +1,11 @@
-// Adds existing functions/methods to DataHarminizer.
+// A dictionary of possible export formats
 export default {
     /**
      * Download secondary headers and grid data.
      * @param {Object} dh DataHarmonizer instance.
      */
-  
+
+    // Virsu seq tsv format
     VirusSeq_Portal: {
       fileType: 'tsv',
       status: 'published',
@@ -16,18 +17,24 @@ export default {
             ['sample_alias', []],
             ['sample_title', []],
             ['sample_description', []],
+            ['scientific_name', []],
             ['tax_id', []],
             ['sample collection method', []],
+            ['sample derived from', []],
             ['broad-scale environmental context', []],
             ['local environmental context', []],
             ['environmental medium', []],
             ['collection date', []],
             ['project name', []],
+            ['study_title', []],
             ['geographic location (country and/or sea)', []],
             ['geographic location (latitude)', []],
+            ['geographic location (longitude)', []],
             ['host taxid', []],
             ['host scientific name', []],
+            ['institute_facility', []],
             ['nutrition_diet_type', []],    
+            ['cage_manufacturer', []],
         ]);
 
         // various null options to recognize for "null reason" fields
@@ -140,78 +147,107 @@ export default {
       },
     },
 
-
+    // Biosample seq tsv format
     BioSample: {
-        fileType: 'xls',
-        status: 'published',
-        method: function (dh) {
-          // Create an export table with template's headers (2nd row) and remaining rows of data
-          const ExportHeaders = new Map([
-            ['sample_alias', []],
-            ['sample_title', []],
-            ['sample_description', []],
-            ['tax_id', []],
-            ['sample collection method', []],
-            ['broad-scale environmental context', []],
-            ['local environmental context', []],
-            ['environmental medium', []],
-            ['collection date', []],
-            ['project name', []],
-            ['geographic location (country and/or sea)', []],
-            ['geographic location (latitude)', []],
-            ['host taxid', []],
-            ['host scientific name', []],
-            ['nutrition_diet_type', []],    
-        ]);
+      fileType: 'xls',
+      status: 'published',
+      method: function (dh) {
+        // Create an export table with template's headers (2nd row) and remaining rows of data
+        const ExportHeaders = new Map([
+          ['sample_alias', []],
+          ['sample_title', []],
+          ['sample_description', []],
+          ['scientific_name', []],
+          ['tax_id', []],
+          ['sample collection method', []],
+          ['sample derived from', []],
+          ['broad-scale environmental context', []],
+          ['local environmental context', []],
+          ['environmental medium', []],
+          ['collection date', []],
+          ['project name', []],
+          ['study_title', []],
+          ['geographic location (country and/or sea)', []],
+          ['geographic location (latitude)', []],
+          ['geographic location (longitude)', []],
+          ['host taxid', []],
+          ['host scientific name', []],
+          ['institute_facility', []],
+          ['nutrition_diet_type', []],    
+          ['cage_manufacturer', []],
+      ]);
 
-        const sourceFields = dh.getFields(dh.table);
-        const sourceFieldNameMap = dh.getFieldNameMap(sourceFields);
-        // Fills in the above mapping (or just set manually above)
-        dh.getHeaderMap(ExportHeaders, sourceFields, 'BIOSAMPLE');
-  
-        // Copy headers to 1st row of new export table
-        const outputMatrix = [[...ExportHeaders.keys()]];
-  
-        for (const inputRow of dh.getTrimmedData(dh.hot)) {
-          const outputRow = [];
-          for (const [headerName, sources] of ExportHeaders) {
-            // Otherwise apply source (many to one) to target field transform:
-            const value = dh.getMappedField(
-              headerName,
-              inputRow,
-              sources,
-              sourceFields,
-              sourceFieldNameMap,
-              ':',
-              'BIOSAMPLE'
-            );
-            outputRow.push(value);
-          }
-          outputMatrix.push(outputRow);
+      const sourceFields = dh.getFields(dh.table);
+      const sourceFieldNameMap = dh.getFieldNameMap(sourceFields);
+      // Fills in the above mapping (or just set manually above)
+      dh.getHeaderMap(ExportHeaders, sourceFields, 'BIOSAMPLE');
+
+      // Copy headers to 1st row of new export table
+      const outputMatrix = [[...ExportHeaders.keys()]];
+
+      for (const inputRow of dh.getTrimmedData(dh.hot)) {
+        const outputRow = [];
+        for (const [headerName, sources] of ExportHeaders) {
+          // Otherwise apply source (many to one) to target field transform:
+          const value = dh.getMappedField(
+            headerName,
+            inputRow,
+            sources,
+            sourceFields,
+            sourceFieldNameMap,
+            ':',
+            'BIOSAMPLE'
+          );
+          outputRow.push(value);
         }
-  
-        return outputMatrix;
-      },
-    },            
+        outputMatrix.push(outputRow);
+      }
 
+      return outputMatrix;
+    },
+  },            
 
+    // Biosample seq tsv format
     ENA_host_associated: {
-        fileType: 'tsv',
-        status: 'published',
-        method: function (dh) {
+      fileType: 'tsv',
+      status: 'published',
+      method: function (dh) {
+        // Create Checklist Header for ENA file
+        const ExportChecklist = new Map([
+          ['Checklist', []],
+          ['ERC000013', []],
+          ['GSC MIxS host associated', []]
+      ]);
 
-          // Create Checklist Header for ENA file
-            const ExportChecklist = new Map([
-                ['Checklist', []],
-                ['ERC000013', []],
-                ['GSC MIxS host associated', []]
-            ]);
-        
-          // Create an export table with template's headers (2nd row) and remaining rows of data
-          const ExportHeaders = new Map([
-            ['sample_alias', []],
+        // Create an export table with template's headers (2nd row) and remaining rows of data
+        const ExportHeaders = new Map([
+          ['sample_alias', []],
+          ['sample_title', []],
+          ['sample_description', []],
+          ['scientific_name', []],
+          ['tax_id', []],
+          ['sample collection method', []],
+          ['sample derived from', []],
+          ['broad-scale environmental context', []],
+          ['local environmental context', []],
+          ['environmental medium', []],
+          ['collection date', []],
+          ['project name', []],
+          ['study_title', []],
+          ['geographic location (country and/or sea)', []],
+          ['geographic location (latitude)', []],
+          ['geographic location (longitude)', []],
+          ['host taxid', []],
+          ['host scientific name', []],
+          ['nutrition_diet_type', []],    
+      ]);
+
+          // Create #units Header for ENA file
+          const ExportUnits = new Map([
+            ['sample_alias', ['#units']],
             ['sample_title', []],
             ['sample_description', []],
+            ['scientific_name', []],
             ['tax_id', []],
             ['sample collection method', []],
             ['sample derived from', []],
@@ -220,27 +256,7 @@ export default {
             ['environmental medium', []],
             ['collection date', []],
             ['project name', []],
-            ['geographic location (country and/or sea)', []],
-            ['geographic location (latitude)', []],
-            ['geographic location (longitude)', []],
-            ['host taxid', []],
-            ['host scientific name', []],
-            ['nutrition_diet_type', []],    
-        ]);
-
-          // Create #units Header for ENA file
-          const ExportUnits = new Map([
-            ['sample_alias', ['#units']],
-            ['sample_title', []],
-            ['sample_description', []],
-            ['tax_id', []],
-            ['sample collection method', []],
-            ['sample derived from', []],            
-            ['broad-scale environmental context', []],
-            ['local environmental context', []],
-            ['environmental medium', []],
-            ['collection date', []],
-            ['project name', []],
+            ['study_title', []],
             ['geographic location (country and/or sea)', []],
             ['geographic location (latitude)', ['DD']],
             ['geographic location (longitude)', ['DD']],
@@ -281,6 +297,8 @@ export default {
   
         return outputMatrix;
       },
-    },         
-  
+    },           
+
+
+
 };

@@ -24,6 +24,7 @@ classes:
     - sample_title
     - sample_alias
     - sample_description
+    - scientific_name
     - tax_id
     - sample collection method
     - sample derived from
@@ -32,6 +33,7 @@ classes:
     - environmental medium
     - collection date
     - project name
+    - study_title
     - geographic location (country and/or sea)
     - geographic location (latitude)
     - geographic location (longitude)
@@ -50,53 +52,59 @@ classes:
       sample_description:
         rank: 3
         slot_group: sample
-      tax_id:
+      scientific_name:
         rank: 4
         slot_group: sample
-      sample collection method:
+      tax_id:
         rank: 5
         slot_group: sample
-      sample derived from:
+      sample collection method:
         rank: 6
         slot_group: sample
-      broad-scale environmental context:
+      sample derived from:
         rank: 7
         slot_group: sample
-      local environmental context:
+      broad-scale environmental context:
         rank: 8
         slot_group: sample
-      environmental medium:
+      local environmental context:
         rank: 9
         slot_group: sample
-      collection date:
+      environmental medium:
         rank: 10
         slot_group: sample
-      project name:
+      collection date:
         rank: 11
+        slot_group: sample
+      project name:
+        rank: 12
+        slot_group: study
+      study_title:
+        rank: 13
         slot_group: study
       geographic location (country and/or sea):
-        rank: 12
-        slot_group: location
-      geographic location (latitude):
-        rank: 13
-        slot_group: location
-      geographic location (longitude):
         rank: 14
         slot_group: location
-      host taxid:
+      geographic location (latitude):
         rank: 15
+        slot_group: location
+      geographic location (longitude):
+        rank: 16
+        slot_group: location
+      host taxid:
+        rank: 17
         slot_group: mouse
       host scientific name:
-        rank: 16
+        rank: 18
         slot_group: mouse
       institute_facility:
-        rank: 17
+        rank: 19
         slot_group: facility
       nutrition_diet_type:
-        rank: 18
+        rank: 20
         slot_group: facility
       cage_manufacturer:
-        rank: 19
+        rank: 21
         slot_group: facility
 slots:
   sample_title:
@@ -141,6 +149,21 @@ slots:
     - VirusSeq_Portal:sample_description
     - BIOSAMPLE:sample_description
     - ENA:sample_description
+    required: true
+  scientific_name:
+    name: scientific_name
+    title: scientific_name
+    description: Scientific name of the sample as in the NCBI Taxonomy database. Example
+      (tax id 410661 has the scientific name mouse gut metagenome
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: mouse gut metagenome
+    slot_uri: NCBITaxon:410661
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:scientific_name
+    - BIOSAMPLE:scientific_name
+    - ENA:scientific_name
     required: true
   tax_id:
     name: tax_id
@@ -207,7 +230,7 @@ slots:
     exact_mappings:
     - VirusSeq_Portal:broad-scale%20environmental%20context
     - BIOSAMPLE:broad-scale%20environmental%20context
-    - ENA:broad-scale%20environment%20context
+    - ENA:broad-scale%20environmental%20context
     required: true
   local environmental context:
     name: local environmental context
@@ -226,8 +249,8 @@ slots:
     range: WhitespaceMinimizedString
     exact_mappings:
     - VirusSeq_Portal:local%20environmental%20context
-    - BIOSAMPLE:local%20environment%20context
-    - ENA:local%20environment%20context
+    - BIOSAMPLE:local%20environmental%20context
+    - ENA:local%20environmental%20context
     required: true
   environmental medium:
     name: environmental medium
@@ -247,7 +270,7 @@ slots:
     exact_mappings:
     - VirusSeq_Portal:environmental%20medium
     - BIOSAMPLE:environmental%20medium
-    - ENA:envrionment%20medium
+    - ENA:environmental%20medium
     required: true
   collection date:
     name: collection date
@@ -280,6 +303,20 @@ slots:
     - VirusSeq_Portal:project%20name
     - BIOSAMPLE:project%20name
     - ENA:project%20name
+    required: true
+  study_title:
+    name: study_title
+    title: study_title
+    description: Name of the study
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: NMGN SYK project
+    slot_uri: GENEPIO:0000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - VirusSeq_Portal:study_title
+    - BIOSAMPLE:study_title
+    - ENA:study_title
     required: true
   geographic location (country and/or sea):
     name: geographic location (country and/or sea)
