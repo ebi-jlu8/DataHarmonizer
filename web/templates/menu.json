@@ -1,4 +1,15 @@
 {
+  "nmgn_microbiome": {
+    "folder": "nmgn_microbiome",
+    "id": "https://example.com/nmgn_microbiome",
+    "version": "1.0.0",
+    "templates": {
+      "nmgn_microbiome": {
+        "name": "nmgn_microbiome",
+        "display": true
+      }
+    }
+  },
   "CanCOGeN_Covid-19": {
     "folder": "canada_covid19",
     "id": "https://example.com/CanCOGeN_Covid-19",
