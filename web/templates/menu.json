@@ -6,6 +6,20 @@
       "display": true
     }
   },
+  "new_nmgn": {
+    "NMGN_microbiome": {
+      "name": "NMGN_microbiome",
+      "status": "published",
+      "display": true
+    }
+  },
+  "nmgn": {
+    "NMGN_microbiome": {
+      "name": "NMGN_microbiome",
+      "status": "published",
+      "display": true
+    }
+  },
   "gisaid": {
     "GISAID": {
       "name": "GISAID",
@@ -87,13 +101,6 @@
   "example": {
     "ExampleTemplate": {
       "name": "ExampleTemplate",
-      "status": "published",
-      "display": true
-    }
-  },
-  "nmgn": {
-    "NMGN_microbiome": {
-      "name": "NMGN_microbiome",
       "status": "published",
       "display": true
     }

@@ -1,0 +1,913 @@
+id: https://nmgn.mrc.ukri.org/clusters/microbiome/
+name: NMGN
+description: A description of the schema containing one or more templates.
+version: 1.0.0
+in_language:
+- en
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
+classes:
+  dh_interface:
+    name: dh_interface
+    description: A DataHarmonizer interface
+    from_schema: https://example.com/NMGN
+  NMGN_microbiome:
+    name: NMGN_microbiome
+    title: NMGN microbiome
+    description: National Mouse Genetics Network metadata template
+    is_a: dh_interface
+    see_also: templates/NMGN/SOP.pdf
+    slots:
+    - project name
+    - consortium_name
+    - geographic location (country and/or sea)
+    - geographic location (latitude)
+    - geographic location (longitude)
+    - facility
+    - facility status
+    - total cages in colony
+    - cage bedding
+    slot_usage:
+      project name:
+        rank: 1
+        slot_group: study
+      consortium_name:
+        rank: 2
+        slot_group: study
+      geographic location (country and/or sea):
+        rank: 3
+        slot_group: location
+      geographic location (latitude):
+        rank: 4
+        slot_group: location
+      geographic location (longitude):
+        rank: 5
+        slot_group: location
+      facility:
+        rank: 6
+        slot_group: facility
+      facility_location:
+        rank: 7
+        slot_group: facility
+      total cages in colony:
+        rank: 8
+        slot_group: housing
+      cage bedding:
+        rank: 9
+        slot_group: housing
+slots:
+  project name:
+    name: project name
+    title: project name
+    description: Name of the project within which the sequencing was organized
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: PRJEB123456
+    slot_uri: GENEPIO:0100429
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA:project%20name
+    required: true
+  consortium_name:
+    name: consortium_name
+    title: consortium_name
+    description: name of the project consortium the sample was collected for.
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: NMGN (national mouse genetics project)
+    slot_uri: GENEPIO:000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA:consortium_name
+    required: true
+  geographic location (country and/or sea):
+    name: geographic location (country and/or sea)
+    title: geographic location (country and/or sea)
+    description: The geographical origin of where the sample was collected from, with
+      the intention of sequencing, as defined by the country or sea name. Country
+      or sea names should be chosen from the INSDC country list (http://insdc.org/country.html).
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: United Kingdom
+    slot_uri: GENEPIO:0100629
+    range: Permitted_countries_menu
+    exact_mappings:
+    - ENA:geographic%20location%20(country%20and/or%20sea)
+    required: true 
+  geographic location (latitude):
+    name: geographic location (latitude)
+    title: geographic location (latitude)
+    description: The geographical origin of the sample as defined by latitude. The
+      values should be reported in decimal degrees and in WGS84 system
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '51.75314817'
+    slot_uri: GENEPIO:0100309
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA:geographic%20location%20(latitude)
+    required: true
+  geographic location (longitude):
+    name: geographic location (longitude)
+    title: geographic location (longitude)
+    description: The geographical origin of the sample as defined by longitude. The
+      values should be reported in decimal degrees and in WGS84 system
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: '-1.214122657'
+    slot_uri: GENEPIO:0100310
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA:geographic%20location%20(longitude)
+    required: true 
+  facility:
+    name: facility
+    title: facility
+    description: name or identification of the facility
+    comments: any additional comments, can have multiple, seperated by commas
+    examples: 
+    - value: Kennedy SPF facility
+    slot_uri: NCIT:C62574
+    range: WhitespaceMinimizedString
+    exact_mappings: 
+    - ENA:facility
+    required: true
+  facility status:
+    name: facility status
+    title: facility status
+    description: the microbiological status of the facility the sampled mouse was housed in (e.g. SPF)
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: SPF
+    slot_uri: GENEPIO:0000000
+    range: facility_condition_options
+    exact_mappings:
+    - ENA:facility%20status
+    required: true
+  total cages in colony:
+    name: total cages in colony
+    title: total cages in colony
+    description: total number of cage or enclosures in the colony of the sampled mouse
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: 10
+    slot_uri: GENEPIO:0000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA:total%20cages%20in%20enclosure
+    required: false
+  cage bedding:
+    name: cage bedding
+    title: cage bedding
+    description: The type and details of bedding used in the cage the sampled mouse
+      was caged in
+    comments: any additional comments, can have multiple, seperated by commas
+    examples:
+    - value: wood chips (non-aspen)
+    slot_uri: GENEPIO:0000000
+    range: WhitespaceMinimizedString
+    exact_mappings:
+    - ENA:enclosure%20bedding 
+enums:
+  null value menu:
+    name: null value menu
+    title: null value menu
+    description: A menu of data collection status options for this field.
+    permissible_values:
+      Not Applicable:
+        text: Not Applicable
+        meaning: GENEPIO:0001619
+      Missing:
+        text: Missing
+        meaning: GENEPIO:0001618
+      Not Collected:
+        text: Not Collected
+        meaning: GENEPIO:0001620
+      Not Provided:
+        text: Not Provided
+        meaning: GENEPIO:0001668
+      Restricted Access:
+        text: Restricted Access
+        meaning: GENEPIO:0001810
+  host_sex_options:
+    name: host_sex_options
+    title: host_sex_options
+    description: gender or sex of the host
+    permissible_values:
+      male:
+        text: male
+      female:
+        text: female
+      missing data sample:
+        text: missing data sample
+  facility_condition_options:
+    name: facility_condition_options
+    title: facility_condition_options
+    description: A list of microbial conditions for the animal facilities.
+    permissible_values:
+      SPF:
+        text: SPF
+      gnotobiotic:
+        text: gnotobiotic
+      germ-free:
+        text: germ-free
+  Permitted_countries_menu:
+    name: Permitted_countries_menu
+    title: Permitted_countries_menu
+    description: A list of permitted countires accepted by ENA
+    permissible_values:
+      Afghanistan:
+        text: Afghanistan
+      Albania:
+        text: Albania
+      Algeria:
+        text: Algeria
+      American Samoa:
+        text: American Samoa
+      Andorra:
+        text: Andorra
+      Angola:
+        text: Angola
+      Anguilla:
+        text: Anguilla
+      Antarctica:
+        text: Antarctica
+      Antigua and Barbuda:
+        text: Antigua and Barbuda
+      Arctic Ocean:
+        text: Arctic Ocean
+      Argentina:
+        text: Argentina
+      Armenia:
+        text: Armenia
+      Aruba:
+        text: Aruba
+      Ashmore and Cartier Islands:
+        text: Ashmore and Cartier Islands
+      Atlantic Ocean:
+        text: Atlantic Ocean
+      Australia:
+        text: Australia
+      Austria:
+        text: Austria
+      Azerbaijan:
+        text: Azerbaijan
+      Bahamas:
+        text: Bahamas
+      Bahrain:
+        text: Bahrain
+      Baltic Sea:
+        text: Baltic Sea
+      Baker Island:
+        text: Baker Island
+      Bangladesh:
+        text: Bangladesh
+      Barbados:
+        text: Barbados
+      Bassas da India:
+        text: Bassas da India
+      Belarus:
+        text: Belarus
+      Belgium:
+        text: Belgium
+      Belize:
+        text: Belize
+      Benin:
+        text: Benin
+      Bermuda:
+        text: Bermuda
+      Bhutan:
+        text: Bhutan
+      Bolivia:
+        text: Bolivia
+      Borneo:
+        text: Borneo
+      Bosnia and Herzegovina:
+        text: Bosnia and Herzegovina
+      Botswana:
+        text: Botswana
+      Bouvet Island:
+        text: Bouvet Island
+      Brazil:
+        text: Brazil
+      British Virgin Islands:
+        text: British Virgin Islands
+      Brunei:
+        text: Brunei
+      Bulgaria:
+        text: Bulgaria
+      Burkina Faso:
+        text: Burkina Faso
+      Burundi:
+        text: Burundi
+      Cambodia:
+        text: Cambodia
+      Cameroon:
+        text: Cameroon
+      Canada:
+        text: Canada
+      Cape Verde:
+        text: Cape Verde
+      Cayman Islands:
+        text: Cayman Islands
+      Central African Republic:
+        text: Central African Republic
+      Chad:
+        text: Chad
+      Chile:
+        text: Chile
+      China:
+        text: China
+      Christmas Island:
+        text: Christmas Island
+      Clipperton Island:
+        text: Clipperton Island
+      Cocos Islands:
+        text: Cocos Islands
+      Colombia:
+        text: Colombia
+      Comoros:
+        text: Comoros
+      Cook Islands:
+        text: Cook Islands
+      Coral Sea Islands:
+        text: Coral Sea Islands
+      Costa Rica:
+        text: Costa Rica
+      Cote d'Ivoire:
+        text: Cote d'Ivoire
+      Croatia:
+        text: Croatia
+      Cuba:
+        text: Cuba
+      Curacao:
+        text: Curacao
+      Cyprus:
+        text: Cyprus
+      Czechia:
+        text: Czechia
+      Democratic Republic of the Congo:
+        text: Democratic Republic of the Congo
+      Denmark:
+        text: Denmark
+      Djibouti:
+        text: Djibouti
+      Dominica:
+        text: Dominica
+      Dominican Republic:
+        text: Dominican Republic
+      Ecuador:
+        text: Ecuador
+      Egypt:
+        text: Egypt
+      El Salvador:
+        text: El Salvador
+      Equatorial Guinea:
+        text: Equatorial Guinea
+      Eritrea:
+        text: Eritrea
+      Estonia:
+        text: Estonia
+      Eswatini:
+        text: Eswatini
+      Ethiopia:
+        text: Ethiopia
+      Europa Island:
+        text: Europa Island
+      Falkland Islands (Islas Malvinas):
+        text: Falkland Islands (Islas Malvinas)
+      Faroe Islands:
+        text: Faroe Islands
+      Fiji:
+        text: Fiji
+      Finland:
+        text: Finland
+      France:
+        text: France
+      French Guiana:
+        text: French Guiana
+      French Polynesia:
+        text: French Polynesia
+      French Southern and Antarctic Lands:
+        text: French Southern and Antarctic Lands
+      Gabon:
+        text: Gabon
+      Gambia:
+        text: Gambia
+      Gaza Strip:
+        text: Gaza Strip
+      Georgia:
+        text: Georgia
+      Germany:
+        text: Germany
+      Ghana:
+        text: Ghana
+      Gibraltar:
+        text: Gibraltar
+      Glorioso Islands:
+        text: Glorioso Islands
+      Greece:
+        text: Greece
+      Greenland:
+        text: Greenland
+      Grenada:
+        text: Grenada
+      Guadeloupe:
+        text: Guadeloupe
+      Guam:
+        text: Guam
+      Guatemala:
+        text: Guatemala
+      Guernsey:
+        text: Guernsey
+      Guinea:
+        text: Guinea
+      Guinea-Bissau:
+        text: Guinea-Bissau
+      Guyana:
+        text: Guyana
+      Haiti:
+        text: Haiti
+      Heard Island and McDonald Islands:
+        text: Heard Island and McDonald Islands
+      Honduras:
+        text: Honduras
+      Hong Kong:
+        text: Hong Kong
+      Howland Island:
+        text: Howland Island
+      Hungary:
+        text: Hungary
+      Iceland:
+        text: Iceland
+      India:
+        text: India
+      Indian Ocean:
+        text: Indian Ocean
+      Indonesia:
+        text: Indonesia
+      Iran:
+        text: Iran
+      Iraq:
+        text: Iraq
+      Ireland:
+        text: Ireland
+      Isle of Man:
+        text: Isle of Man
+      Israel:
+        text: Israel
+      Italy:
+        text: Italy
+      Jamaica:
+        text: Jamaica
+      Jan Mayen:
+        text: Jan Mayen
+      Japan:
+        text: Japan
+      Jarvis Island:
+        text: Jarvis Island
+      Jersey:
+        text: Jersey
+      Johnston Atoll:
+        text: Johnston Atoll
+      Jordan:
+        text: Jordan
+      Juan de Nova Island:
+        text: Juan de Nova Island
+      Kazakhstan:
+        text: Kazakhstan
+      Kenya:
+        text: Kenya
+      Kerguelen Archipelago:
+        text: Kerguelen Archipelago
+      Kingman Reef:
+        text: Kingman Reef
+      Kiribati:
+        text: Kiribati
+      Kosovo:
+        text: Kosovo
+      Kuwait:
+        text: Kuwait
+      Kyrgyzstan:
+        text: Kyrgyzstan
+      Laos:
+        text: Laos
+      Latvia:
+        text: Latvia
+      Lebanon:
+        text: Lebanon
+      Lesotho:
+        text: Lesotho
+      Liberia:
+        text: Liberia
+      Libya:
+        text: Libya
+      Liechtenstein:
+        text: Liechtenstein
+      Line Islands:
+        text: Line Islands
+      Lithuania:
+        text: Lithuania
+      Luxembourg:
+        text: Luxembourg
+      Macau:
+        text: Macau
+      Madagascar:
+        text: Madagascar
+      Malawi:
+        text: Malawi
+      Malaysia:
+        text: Malaysia
+      Maldives:
+        text: Maldives
+      Mali:
+        text: Mali
+      Malta:
+        text: Malta
+      Marshall Islands:
+        text: Marshall Islands
+      Martinique:
+        text: Martinique
+      Mauritania:
+        text: Mauritania
+      Mauritius:
+        text: Mauritius
+      Mayotte:
+        text: Mayotte
+      Mediterranean Sea:
+        text: Mediterranean Sea
+      Mexico:
+        text: Mexico
+      Micronesia, Federated States of:
+        text: Micronesia, Federated States of
+      Midway Islands:
+        text: Midway Islands
+      Moldova:
+        text: Moldova
+      Monaco:
+        text: Monaco
+      Mongolia:
+        text: Mongolia
+      Montenegro:
+        text: Montenegro
+      Montserrat:
+        text: Montserrat
+      Morocco:
+        text: Morocco
+      Mozambique:
+        text: Mozambique
+      Myanmar:
+        text: Myanmar
+      Namibia:
+        text: Namibia
+      Nauru:
+        text: Nauru
+      Navassa Island:
+        text: Navassa Island
+      Nepal:
+        text: Nepal
+      Netherlands:
+        text: Netherlands
+      New Caledonia:
+        text: New Caledonia
+      New Zealand:
+        text: New Zealand
+      Nicaragua:
+        text: Nicaragua
+      Niger:
+        text: Niger
+      Nigeria:
+        text: Nigeria
+      Niue:
+        text: Niue
+      Norfolk Island:
+        text: Norfolk Island
+      North Korea:
+        text: North Korea
+      North Macedonia:
+        text: North Macedonia
+      North Sea:
+        text: North Sea
+      Northern Mariana Islands:
+        text: Northern Mariana Islands
+      Norway:
+        text: Norway
+      Oman:
+        text: Oman
+      Pacific Ocean:
+        text: Pacific Ocean
+      Pakistan:
+        text: Pakistan
+      Palau:
+        text: Palau
+      Palmyra Atoll:
+        text: Palmyra Atoll
+      Panama:
+        text: Panama
+      Papua New Guinea:
+        text: Papua New Guinea
+      Paracel Islands:
+        text: Paracel Islands
+      Paraguay:
+        text: Paraguay
+      Peru:
+        text: Peru
+      Philippines:
+        text: Philippines
+      Pitcairn Islands:
+        text: Pitcairn Islands
+      Poland:
+        text: Poland
+      Portugal:
+        text: Portugal
+      Puerto Rico:
+        text: Puerto Rico
+      Qatar:
+        text: Qatar
+      Republic of the Congo:
+        text: Republic of the Congo
+      Reunion:
+        text: Reunion
+      Romania:
+        text: Romania
+      Ross Sea:
+        text: Ross Sea
+      Russia:
+        text: Russia
+      Rwanda:
+        text: Rwanda
+      Saint Barthelemy:
+        text: Saint Barthelemy
+      Saint Helena:
+        text: Saint Helena
+      Saint Kitts and Nevis:
+        text: Saint Kitts and Nevis
+      Saint Lucia:
+        text: Saint Lucia
+      Saint Martin:
+        text: Saint Martin
+      Saint Pierre and Miquelon:
+        text: Saint Pierre and Miquelon
+      Saint Vincent and the Grenadines:
+        text: Saint Vincent and the Grenadines
+      Samoa:
+        text: Samoa
+      San Marino:
+        text: San Marino
+      Sao Tome and Principe:
+        text: Sao Tome and Principe
+      Saudi Arabia:
+        text: Saudi Arabia
+      Senegal:
+        text: Senegal
+      Serbia:
+        text: Serbia
+      Seychelles:
+        text: Seychelles
+      Sierra Leone:
+        text: Sierra Leone
+      Singapore:
+        text: Singapore
+      Sint Maarten:
+        text: Sint Maarten
+      Slovakia:
+        text: Slovakia
+      Slovenia:
+        text: Slovenia
+      Solomon Islands:
+        text: Solomon Islands
+      Somalia:
+        text: Somalia
+      South Africa:
+        text: South Africa
+      South Georgia and the South Sandwich Islands:
+        text: South Georgia and the South Sandwich Islands
+      South Korea:
+        text: South Korea
+      South Sudan:
+        text: South Sudan
+      Southern Ocean:
+        text: Southern Ocean
+      Spain:
+        text: Spain
+      Spratly Islands:
+        text: Spratly Islands
+      Sri Lanka:
+        text: Sri Lanka
+      State of Palestine:
+        text: State of Palestine
+      Sudan:
+        text: Sudan
+      Suriname:
+        text: Suriname
+      Svalbard:
+        text: Svalbard
+      Sweden:
+        text: Sweden
+      Switzerland:
+        text: Switzerland
+      Syria:
+        text: Syria
+      Taiwan:
+        text: Taiwan
+      Tajikistan:
+        text: Tajikistan
+      Tanzania:
+        text: Tanzania
+      Tasman Sea:
+        text: Tasman Sea
+      Thailand:
+        text: Thailand
+      Timor-Leste:
+        text: Timor-Leste
+      Togo:
+        text: Togo
+      Tokelau:
+        text: Tokelau
+      Tonga:
+        text: Tonga
+      Trinidad and Tobago:
+        text: Trinidad and Tobago
+      Tromelin Island:
+        text: Tromelin Island
+      Tunisia:
+        text: Tunisia
+      Turkey:
+        text: Turkey
+      Turkmenistan:
+        text: Turkmenistan
+      Turks and Caicos Islands:
+        text: Turks and Caicos Islands
+      Tuvalu:
+        text: Tuvalu
+      Uganda:
+        text: Uganda
+      Ukraine:
+        text: Ukraine
+      United Arab Emirates:
+        text: United Arab Emirates
+      United Kingdom:
+        text: United Kingdom
+      Uruguay:
+        text: Uruguay
+      USA:
+        text: USA
+      Uzbekistan:
+        text: Uzbekistan
+      Vanuatu:
+        text: Vanuatu
+      Venezuela:
+        text: Venezuela
+      Viet Nam:
+        text: Viet Nam
+      Virgin Islands:
+        text: Virgin Islands
+      Wake Island:
+        text: Wake Island
+      Wallis and Futuna:
+        text: Wallis and Futuna
+      West Bank:
+        text: West Bank
+      Western Sahara:
+        text: Western Sahara
+      Yemen:
+        text: Yemen
+      Zambia:
+        text: Zambia
+      Zimbabwe:
+        text: Zimbabwe
+      Belgian Congo:
+        text: Belgian Congo
+      British Guiana:
+        text: British Guiana
+      Burma:
+        text: Burma
+      Czechoslovakia:
+        text: Czechoslovakia
+      Czech Republic:
+        text: Czech Republic
+      East Timor:
+        text: East Timor
+      Korea:
+        text: Korea
+      Macedonia:
+        text: Macedonia
+      Micronesia:
+        text: Micronesia
+      Netherlands Antilles:
+        text: Netherlands Antilles
+      Serbia and Montenegro:
+        text: Serbia and Montenegro
+      Siam:
+        text: Siam
+      Swaziland:
+        text: Swaziland
+      The former Yugoslav Republic of Macedonia:
+        text: The former Yugoslav Republic of Macedonia
+      USSR:
+        text: USSR
+      Yugoslavia:
+        text: Yugoslavia
+      Zaire:
+        text: Zaire
+  Permitted_Facilities_menu:
+    name: Permitted_Facilities_menu
+    title: Permitted_Facilities_menu
+    description: A list of institutes-facilities (18) used by the NMGN microbiome
+      cluster for mouse studies
+    permissible_values:
+      MRC Harwell-Mary Lyons Centre:
+        text: MRC Harwell-Mary Lyons Centre
+      Francis Crick Institute-aimal facility:
+        text: Francis Crick Institute-aimal facility
+      Wellcome Sanger Institute-animal facility:
+        text: Wellcome Sanger Institute-animal facility
+      UE Queen's Medical Research Institute-Centre for Cardiovascular Science:
+        text: UE Queen's Medical Research Institute-Centre for Cardiovascular Science
+      Oxford Biomedial Services Building:
+        text: Oxford Biomedial Services Building
+      Cambridge University Biomedical Services:
+        text: Cambridge University Biomedical Services
+      King's College London-Animal Research Facility:
+        text: King's College London-Animal Research Facility
+      Barbraham Institute - Animal Facility:
+        text: Barbraham Institute - Animal Facility
+      Manchester University-Biological Services Facility:
+        text: Manchester University-Biological Services Facility
+      Pirbright Institute-Brooksby Building:
+        text: Pirbright Institute-Brooksby Building
+  cage_manufacturer_menu:
+    name: cage_manufacturer_menu
+    title: cage_manufacturer_menu
+    description: a list of manufacturers that the mouse cages are sourced from.
+    permissible_values:
+      Tecniplast:
+        text: Tecniplast
+      Allen town:
+        text: Allen town
+      NKP:
+        text: NKP
+      cage_manufacturer_4:
+        text: cage_manufacturer_4
+  sample collection date precision menu:
+    name: sample collection date precision menu
+    title: sample collection date precision menu
+    description: date the sample was collected
+    permissible_values:
+      year:
+        text: year
+        meaning: UO:0000036
+      month:
+        text: month
+        meaning: UO:0000035
+      day:
+        text: day
+        meaning: UO:0000033
+  nutrition_diet_types_option:
+    name: nutrition_diet_types_option
+    title: nutrition_diet_types_option
+    description: a list of diet types that can be provided to the NMGN mice.
+    permissible_values:
+      natural ingredients:
+        text: natural ingredients
+      chemically-defined:
+        text: chemically-defined
+      purified diet:
+        text: purified diet
+      transgenic mouse special food:
+        text: transgenic mouse special food
+  tax_id_menu:
+    name: tax_id_menu
+    title: tax_id_menu
+    description: Taxonomic identification of the organism(s) collected as in the NCBI
+      Taxonomy database
+    permissible_values:
+      '410661':
+        text: '410661'
+        meaning: NCBITaxon:410661
+      '1441287':
+        text: '1441287'
+        meaning: NCBITaxon:1441287
+types:
+  WhitespaceMinimizedString:
+    name: WhitespaceMinimizedString
+    typeof: string
+    description: 'A string that has all whitespace trimmed off of beginning and end,
+      and all internal whitespace segments reduced to single spaces. Whitespace includes
+      #x9 (tab), #xA (linefeed), and #xD (carriage return).'
+    base: str
+    uri: xsd:token
+  Provenance:
+    name: Provenance
+    typeof: string
+    description: A field containing a DataHarmonizer versioning marker. It is issued
+      by DataHarmonizer when validation is applied to a given row of data.
+    base: str
+    uri: xsd:token
+settings:
+  Title_Case: "(((?<=\b)[^a-z\\W]\\w*?|[\\W])+)"
+  UPPER_CASE: '[A-Z\W\d_]*'
+  lower_case: '[a-z\W\d_]*'
