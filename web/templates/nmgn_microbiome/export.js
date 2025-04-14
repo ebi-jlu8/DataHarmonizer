@@ -145,7 +145,7 @@
 
             ]);
         
-            const sourceFields = dh.getFields(dh.table);
+            const sourceFields = dh.slots; //dh.getFields(dh.table);
             const sourceFieldNameMap = dh.getFieldNameMap(sourceFields);
             // Fills in the above mapping (or just set manually above)
             dh.getHeaderMap(ExportHeaders, sourceFields, 'ENA_host_associated');

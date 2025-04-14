@@ -1,11 +1,11 @@
 {
-  "nmgn_microbiome": {
+  "NMGN_microbiome":{
     "folder": "nmgn_microbiome",
     "id": "https://example.com/nmgn_microbiome",
     "version": "1.0.0",
     "templates": {
-      "nmgn_microbiome": {
-        "name": "nmgn_microbiome",
+      "NMGN_microbiome": {
+        "name": "NMGN_microbiome",
         "display": true
       }
     }

@@ -1,6 +1,6 @@
 {
-  "name": "NMGN",
-  "description": "A description of the schema containing one or more templates.",
+  "name": "NMGN_microbiome",
+  "description": "The NMGN consists of multiple disease-focused clusters pursuing distinctive, but complementary, challenge-led research, robustly phenotyping strains, performing pre-clinical trials, and providing training. Key within these clusters will be both experts in developing mouse genetic models, and translational and clinical scientists to provide a clear path to clinical translation. Furthermore, the clusters will interact with each other to capitalise on the numerous opportunities there will be for cross-disease learning. The microbiome cluster is focussed on the study of monogeneic surface barrier-associated disorders and the microbiome which may play a influential role on disease progression.",
   "in_language": [
     "en"
   ],
@@ -14,6 +14,110 @@
     "GENEPIO": {
       "prefix_prefix": "GENEPIO",
       "prefix_reference": "http://purl.obolibrary.org/obo/GENEPIO_"
+    },
+    "BTO": {
+      "prefix_prefix": "BTO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/BTO_"
+    },
+    "CIDO": {
+      "prefix_prefix": "CIDO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CIDO_"
+    },
+    "CLO": {
+      "prefix_prefix": "CLO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CLO_"
+    },
+    "DOID": {
+      "prefix_prefix": "DOID",
+      "prefix_reference": "http://purl.obolibrary.org/obo/DOID_"
+    },
+    "ECTO": {
+      "prefix_prefix": "ECTO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/ECTO_"
+    },
+    "EFO": {
+      "prefix_prefix": "EFO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/EFO_"
+    },
+    "ENVO": {
+      "prefix_prefix": "ENVO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/ENVO_"
+    },
+    "FOODON": {
+      "prefix_prefix": "FOODON",
+      "prefix_reference": "http://purl.obolibrary.org/obo/FOODON_"
+    },
+    "GAZ": {
+      "prefix_prefix": "GAZ",
+      "prefix_reference": "http://purl.obolibrary.org/obo/GAZ_"
+    },
+    "GSSO": {
+      "prefix_prefix": "GSSO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/GSSO_"
+    },
+    "HP": {
+      "prefix_prefix": "HP",
+      "prefix_reference": "http://purl.obolibrary.org/obo/HP_"
+    },
+    "IDO": {
+      "prefix_prefix": "IDO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/IDO_"
+    },
+    "MP": {
+      "prefix_prefix": "MP",
+      "prefix_reference": "http://purl.obolibrary.org/obo/MP_"
+    },
+    "MMO": {
+      "prefix_prefix": "MMO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/MMO_"
+    },
+    "MONDO": {
+      "prefix_prefix": "MONDO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/MONDO_"
+    },
+    "MPATH": {
+      "prefix_prefix": "MPATH",
+      "prefix_reference": "http://purl.obolibrary.org/obo/MPATH_"
+    },
+    "NCIT": {
+      "prefix_prefix": "NCIT",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCIT_"
+    },
+    "NCBITaxon": {
+      "prefix_prefix": "NCBITaxon",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    "NBO": {
+      "prefix_prefix": "NBO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NBO_"
+    },
+    "OBI": {
+      "prefix_prefix": "OBI",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OBI_"
+    },
+    "OMRSE": {
+      "prefix_prefix": "OMRSE",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OMRSE_"
+    },
+    "PCO": {
+      "prefix_prefix": "PCO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/PCO_"
+    },
+    "TRANS": {
+      "prefix_prefix": "TRANS",
+      "prefix_reference": "http://purl.obolibrary.org/obo/TRANS_"
+    },
+    "UBERON": {
+      "prefix_prefix": "UBERON",
+      "prefix_reference": "http://purl.obolibrary.org/obo/UBERON_"
+    },
+    "UO": {
+      "prefix_prefix": "UO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/UO_"
+    },
+    "VO": {
+      "prefix_prefix": "VO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/VO_"
     },
     "xsd": {
       "prefix_prefix": "xsd",
@@ -1398,7 +1502,7 @@
   "slots": {
     "ena study accession": {
       "name": "ena study accession",
-      "description": "primary project accession within which the sequencing was organised (e.g. PRJEB12345) .",
+      "description": "primary project accession within which the sequencing was organised (e.g. PRJEB12345) . This accession can be found when you register the project in ENA.",
       "title": "ena study accession",
       "comments": [
         "any additional comments, can have multiple, seperated by commas"
@@ -2086,10 +2190,10 @@
       "range": "WhitespaceMinimizedString",
       "recommended": true
     },
-    "total mass": {
-      "name": "total mass",
+    "total mass (grams)": {
+      "name": "total mass (grams)",
       "description": "total mass of the host  (in grams) at the time of sample collection.",
-      "title": "total mass",
+      "title": "total mass (grams)",
       "comments": [
         "any additional comments, can have multiple, seperated by commas"
       ],
@@ -2385,10 +2489,10 @@
       "range": "WhitespaceMinimizedString",
       "recommended": true
     },
-    "amount or size of sample collected": {
-      "name": "amount or size of sample collected",
+    "amount or size of sample collected (grams)": {
+      "name": "amount or size of sample collected (grams)",
       "description": "amount or size of sample collected",
-      "title": "amount or size of sample collected",
+      "title": "amount or size of sample collected (grams)",
       "comments": [
         "any additional comments, can have multiple, seperated by commas"
       ],
@@ -2615,16 +2719,16 @@
       "range": "WhitespaceMinimizedString",
       "required": false
     },
-    "sample volume or weight for DNA extraction": {
-      "name": "sample volume or weight for DNA extraction",
+    "sample volume or weight for DNA extraction (grams)": {
+      "name": "sample volume or weight for DNA extraction (grams)",
       "description": "Mass (g) of total collected sample for DNA extraction. Note: total sample collected should be entered under the term'amount or size of sample collected'.",
-      "title": "sample volume or weight for DNA extraction",
+      "title": "sample volume or weight for DNA extraction (grams)",
       "comments": [
         "any additional comments, can have multiple, seperated by commas"
       ],
       "examples": [
         {
-          "value": "2"
+          "value": "0.5"
         }
       ],
       "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
@@ -2636,7 +2740,7 @@
         "NMGN_microbiome"
       ],
       "range": "WhitespaceMinimizedString",
-      "required": false
+      "recommended": true
     },
     "sample_alias": {
       "name": "sample_alias",
@@ -2739,11 +2843,11 @@
     },
     "NMGN_microbiome": {
       "name": "NMGN_microbiome",
-      "description": "National Mouse Genetics Network metadata template",
+      "description": "Recommeded set of metadata fields for for registration of sequencing samples into ENA. Further information about each sample can be found in the NMGN Dataplatform",
       "title": "NMGN microbiome",
       "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
       "see_also": [
-        "templates/NMGN/SOP.pdf"
+        "templates/NMGN_microbiome/SOP.pdf"
       ],
       "is_a": "dh_interface",
       "slot_usage": {
@@ -2897,8 +3001,8 @@
           "rank": 30,
           "slot_group": "mouse"
         },
-        "total mass": {
-          "name": "total mass",
+        "total mass (grams)": {
+          "name": "total mass (grams)",
           "rank": 31,
           "slot_group": "mouse"
         },
@@ -2962,8 +3066,8 @@
           "rank": 43,
           "slot_group": "sample"
         },
-        "amount or size of sample collected": {
-          "name": "amount or size of sample collected",
+        "amount or size of sample collected (grams)": {
+          "name": "amount or size of sample collected (grams)",
           "rank": 44,
           "slot_group": "sample"
         },
@@ -3012,8 +3116,8 @@
           "rank": 53,
           "slot_group": "sample"
         },
-        "sample volume or weight for DNA extraction": {
-          "name": "sample volume or weight for DNA extraction",
+        "sample volume or weight for DNA extraction (grams)": {
+          "name": "sample volume or weight for DNA extraction (grams)",
           "rank": 54,
           "slot_group": "sample"
         },
@@ -3041,7 +3145,7 @@
       "attributes": {
         "ena study accession": {
           "name": "ena study accession",
-          "description": "primary project accession within which the sequencing was organised (e.g. PRJEB12345) .",
+          "description": "primary project accession within which the sequencing was organised (e.g. PRJEB12345) . This accession can be found when you register the project in ENA.",
           "title": "ena study accession",
           "comments": [
             "any additional comments, can have multiple, seperated by commas"
@@ -3849,10 +3953,10 @@
           "range": "WhitespaceMinimizedString",
           "recommended": true
         },
-        "total mass": {
-          "name": "total mass",
+        "total mass (grams)": {
+          "name": "total mass (grams)",
           "description": "total mass of the host  (in grams) at the time of sample collection.",
-          "title": "total mass",
+          "title": "total mass (grams)",
           "comments": [
             "any additional comments, can have multiple, seperated by commas"
           ],
@@ -3867,7 +3971,7 @@
           ],
           "rank": 31,
           "slot_uri": "PRIDE:0000687",
-          "alias": "total_mass",
+          "alias": "total_mass_(grams)",
           "owner": "NMGN_microbiome",
           "domain_of": [
             "NMGN_microbiome"
@@ -4200,10 +4304,10 @@
           "range": "WhitespaceMinimizedString",
           "recommended": true
         },
-        "amount or size of sample collected": {
-          "name": "amount or size of sample collected",
+        "amount or size of sample collected (grams)": {
+          "name": "amount or size of sample collected (grams)",
           "description": "amount or size of sample collected",
-          "title": "amount or size of sample collected",
+          "title": "amount or size of sample collected (grams)",
           "comments": [
             "any additional comments, can have multiple, seperated by commas"
           ],
@@ -4218,7 +4322,7 @@
           ],
           "rank": 44,
           "slot_uri": "GENEPIO:0000000",
-          "alias": "amount_or_size_of_sample_collected",
+          "alias": "amount_or_size_of_sample_collected_(grams)",
           "owner": "NMGN_microbiome",
           "domain_of": [
             "NMGN_microbiome"
@@ -4470,16 +4574,16 @@
           "range": "WhitespaceMinimizedString",
           "required": false
         },
-        "sample volume or weight for DNA extraction": {
-          "name": "sample volume or weight for DNA extraction",
+        "sample volume or weight for DNA extraction (grams)": {
+          "name": "sample volume or weight for DNA extraction (grams)",
           "description": "Mass (g) of total collected sample for DNA extraction. Note: total sample collected should be entered under the term'amount or size of sample collected'.",
-          "title": "sample volume or weight for DNA extraction",
+          "title": "sample volume or weight for DNA extraction (grams)",
           "comments": [
             "any additional comments, can have multiple, seperated by commas"
           ],
           "examples": [
             {
-              "value": "2"
+              "value": "0.5"
             }
           ],
           "from_schema": "https://nmgn.mrc.ukri.org/clusters/microbiome/",
@@ -4488,14 +4592,14 @@
           ],
           "rank": 54,
           "slot_uri": "GENEPIO:0000000",
-          "alias": "sample_volume_or_weight_for_DNA_extraction",
+          "alias": "sample_volume_or_weight_for_DNA_extraction_(grams)",
           "owner": "NMGN_microbiome",
           "domain_of": [
             "NMGN_microbiome"
           ],
           "slot_group": "sample",
           "range": "WhitespaceMinimizedString",
-          "required": false
+          "recommended": true
         },
         "sample_alias": {
           "name": "sample_alias",

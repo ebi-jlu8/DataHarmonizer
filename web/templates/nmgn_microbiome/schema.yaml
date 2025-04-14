@@ -1,6 +1,14 @@
 id: https://nmgn.mrc.ukri.org/clusters/microbiome/
-name: NMGN
-description: A description of the schema containing one or more templates.
+name: NMGN_microbiome
+description: The NMGN consists of multiple disease-focused clusters pursuing distinctive,
+  but complementary, challenge-led research, robustly phenotyping strains, performing
+  pre-clinical trials, and providing training. Key within these clusters will be both
+  experts in developing mouse genetic models, and translational and clinical scientists
+  to provide a clear path to clinical translation. Furthermore, the clusters will
+  interact with each other to capitalise on the numerous opportunities there will
+  be for cross-disease learning. The microbiome cluster is focussed on the study of
+  monogeneic surface barrier-associated disorders and the microbiome which may play
+  a influential role on disease progression.
 version: 1.0.0
 in_language:
 - en
@@ -9,17 +17,45 @@ imports:
 prefixes:
   linkml: https://w3id.org/linkml/
   GENEPIO: http://purl.obolibrary.org/obo/GENEPIO_
+  BTO: http://purl.obolibrary.org/obo/BTO_
+  CIDO: http://purl.obolibrary.org/obo/CIDO_
+  CLO: http://purl.obolibrary.org/obo/CLO_
+  DOID: http://purl.obolibrary.org/obo/DOID_
+  ECTO: http://purl.obolibrary.org/obo/ECTO_
+  EFO: http://purl.obolibrary.org/obo/EFO_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  GAZ: http://purl.obolibrary.org/obo/GAZ_
+  GSSO: http://purl.obolibrary.org/obo/GSSO_
+  HP: http://purl.obolibrary.org/obo/HP_
+  IDO: http://purl.obolibrary.org/obo/IDO_
+  MP: http://purl.obolibrary.org/obo/MP_
+  MMO: http://purl.obolibrary.org/obo/MMO_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  MPATH: http://purl.obolibrary.org/obo/MPATH_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  NBO: http://purl.obolibrary.org/obo/NBO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  OMRSE: http://purl.obolibrary.org/obo/OMRSE_
+  PCO: http://purl.obolibrary.org/obo/PCO_
+  TRANS: http://purl.obolibrary.org/obo/TRANS_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  UO: http://purl.obolibrary.org/obo/UO_
+  VO: http://purl.obolibrary.org/obo/VO_
 classes:
   dh_interface:
     name: dh_interface
     description: A DataHarmonizer interface
-    from_schema: https://example.com/NMGN
+    from_schema: https://example.com/NMGN_microbiome
   NMGN_microbiome:
     name: NMGN_microbiome
     title: NMGN microbiome
-    description: National Mouse Genetics Network metadata template
+    description: Recommeded set of metadata fields for for registration of sequencing
+      samples into ENA. Further information about each sample can be found in the
+      NMGN Dataplatform
     is_a: dh_interface
-    see_also: templates/NMGN/SOP.pdf
+    see_also: templates/NMGN_microbiome/SOP.pdf
     slots:
     - ena study accession
     - consortium_name
@@ -51,7 +87,7 @@ classes:
     - subject ID
     - mouse supplier
     - mouse taxid
-    - total mass
+    - total mass (grams)
     - generations since colony refreshment
     - refreshment method
     - time of last refreshment
@@ -64,7 +100,7 @@ classes:
     - collection date
     - collection start time
     - collection end time
-    - amount or size of sample collected
+    - amount or size of sample collected (grams)
     - broad-scale environmental context
     - local environmental context
     - environmental medium
@@ -74,7 +110,7 @@ classes:
     - sample storage duration
     - sample storage location
     - sample storage temperature
-    - sample volume or weight for DNA extraction
+    - sample volume or weight for DNA extraction (grams)
     - sample_alias
     - sample_description
     - sample_title
@@ -170,7 +206,7 @@ classes:
       mouse taxid:
         rank: 30
         slot_group: mouse
-      total mass:
+      total mass (grams):
         rank: 31
         slot_group: mouse
       generations since colony refreshment:
@@ -209,7 +245,7 @@ classes:
       collection end time:
         rank: 43
         slot_group: sample
-      amount or size of sample collected:
+      amount or size of sample collected (grams):
         rank: 44
         slot_group: sample
       broad-scale environmental context:
@@ -239,7 +275,7 @@ classes:
       sample storage temperature:
         rank: 53
         slot_group: sample
-      sample volume or weight for DNA extraction:
+      sample volume or weight for DNA extraction (grams):
         rank: 54
         slot_group: sample
       sample_alias:
@@ -259,7 +295,8 @@ slots:
     name: ena study accession
     title: ena study accession
     description: primary project accession within which the sequencing was organised
-      (e.g. PRJEB12345) .
+      (e.g. PRJEB12345) . This accession can be found when you register the project
+      in ENA.
     comments: any additional comments, can have multiple, seperated by commas
     examples:
     - value: PRJEBXXXXX
@@ -640,9 +677,9 @@ slots:
     exact_mappings:
     - ENA_host_associated:host%20taxid
     recommended: true
-  total mass:
-    name: total mass
-    title: total mass
+  total mass (grams):
+    name: total mass (grams)
+    title: total mass (grams)
     description: total mass of the host  (in grams) at the time of sample collection.
     comments: any additional comments, can have multiple, seperated by commas
     examples:
@@ -807,9 +844,9 @@ slots:
     exact_mappings:
     - ENA_host_associated:collection%20end%20time
     recommended: true
-  amount or size of sample collected:
-    name: amount or size of sample collected
-    title: amount or size of sample collected
+  amount or size of sample collected (grams):
+    name: amount or size of sample collected (grams)
+    title: amount or size of sample collected (grams)
     description: amount or size of sample collected
     comments: any additional comments, can have multiple, seperated by commas
     examples:
@@ -950,20 +987,20 @@ slots:
     exact_mappings:
     - ENA_host_associated:sample%20storage%20temperature
     required: false
-  sample volume or weight for DNA extraction:
-    name: sample volume or weight for DNA extraction
-    title: sample volume or weight for DNA extraction
+  sample volume or weight for DNA extraction (grams):
+    name: sample volume or weight for DNA extraction (grams)
+    title: sample volume or weight for DNA extraction (grams)
     description: 'Mass (g) of total collected sample for DNA extraction. Note: total
       sample collected should be entered under the term''amount or size of sample
       collected''.'
     comments: any additional comments, can have multiple, seperated by commas
     examples:
-    - value: '2'
+    - value: '0.5'
     slot_uri: GENEPIO:0000000
     range: WhitespaceMinimizedString
     exact_mappings:
     - ENA_host_associated:sample%20volume%20or%20weight%20for%20DNA%20extraction
-    required: false
+    recommended: true
   sample_alias:
     name: sample_alias
     title: sample_alias
